@@ -158,7 +158,21 @@ const SEED_POSTS=[
  {id:"p2",who:"Lakshmi Devi",text:{en:"A buyer asked me to pack a lamp for courier. What do you use inside the box?",te:"ఒక కొనుగోలుదారు దీపాన్ని కొరియర్‌లో పంపమన్నారు. మీరు పెట్టెలో ఏం వాడతారు?"},t:0,likes:1,comments:[],sample:true,photo:"assets/carving-lamp.jpg"}
 ];
 
-/* ---------- saved data (browser storage may be unavailable) ---------- */
+/* ---------- Supabase Cloud Database Client ---------- */
+const SUPABASE_URL = "https://qtircpfapqtedajuvznk.supabase.co";
+// Paste your public anon key here (from Supabase Dashboard > Project Settings > API)
+const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "";
+let sb = null;
+if (window.supabase && SUPABASE_ANON_KEY) {
+  try {
+    sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    console.log("Supabase client initialized successfully");
+  } catch(e) {
+    console.warn("Supabase init error:", e);
+  }
+}
+
+/* ---------- saved data (browser storage fallback) ---------- */
 const KEY="hunar-setu-v1";
 function fresh(){return {lang:"en",works:[],requests:[],posts:SEED_POSTS.map(p=>({...p,comments:[...p.comments]})),done:[],liked:[],users:{},session:""}}
 let S=fresh();
@@ -473,11 +487,38 @@ async function doAuth(){
   if(Object.keys(m).length)return fail(m);
   try{
     if(reg){
-      if(S.users[phone])return fail({"u-phone":t("errExists")});
-      S.users[phone]={name,...(await hashPw(pass))};
+      if(sb){
+        const {data: existing} = await sb.from("app_users").select("phone").eq("phone", phone).maybeSingle();
+        if(existing) return fail({"u-phone": t("errExists")});
+        const hp = await hashPw(pass);
+        const {error: insErr} = await sb.from("app_users").insert([{
+          phone,
+          name,
+          password_hash: hp.hash,
+          salt: hp.salt
+        }]);
+        if(insErr) console.warn("Supabase insert error:", insErr);
+        S.users[phone] = {name, ...hp};
+      } else {
+        if(S.users[phone])return fail({"u-phone":t("errExists")});
+        S.users[phone]={name,...(await hashPw(pass))};
+      }
     }else{
-      const u=S.users[phone];
-      if(!u||(await hashPw(pass,u.salt)).hash!==u.hash)return fail({"u-pass":t("errLogin")});
+      if(sb){
+        const {data: uDb, error: selErr} = await sb.from("app_users").select("*").eq("phone", phone).maybeSingle();
+        if(selErr) console.warn("Supabase select error:", selErr);
+        if(uDb){
+          const hp = await hashPw(pass, uDb.salt);
+          if(hp.hash !== uDb.password_hash) return fail({"u-pass": t("errLogin")});
+          S.users[phone] = {name: uDb.name, salt: uDb.salt, hash: uDb.password_hash};
+        } else {
+          const u=S.users[phone];
+          if(!u||(await hashPw(pass,u.salt)).hash!==u.hash)return fail({"u-pass":t("errLogin")});
+        }
+      } else {
+        const u=S.users[phone];
+        if(!u||(await hashPw(pass,u.salt)).hash!==u.hash)return fail({"u-pass":t("errLogin")});
+      }
     }
   }catch(e){return fail({"u-pass":t("errCrypto")})}
   S.session=phone;save();errs={};authMode="login";
@@ -570,16 +611,25 @@ document.addEventListener("submit",e=>{
     const m={};if(!val("a-name"))m["a-name"]=t("errName");if(!val("a-piece"))m["a-piece"]=t("errPiece");
     if(Object.keys(m).length)return fail(m);
     S.works.unshift({id:"u"+Date.now(),by:val("a-name"),village:val("a-vil"),title:val("a-piece"),kind:val("a-type")||"decor",price:Number(val("a-price"))||0,about:val("a-about"),photo:pending.photo});
+    if(sb){
+      sb.from("artisan_works").insert([{by_name:val("a-name"),village:val("a-vil")||"Durgi",title:val("a-piece"),kind:val("a-type")||"decor",price:Number(val("a-price"))||0,about:val("a-about")}]).then(({error})=>{if(error)console.warn("Supabase add error:",error)});
+    }
     save();pending.photo="";errs={};flash=t("saved");flashView="gallery";filter="all";location.hash="#gallery";
   }else if(f.id==="ordForm"){
     const m={};if(!val("o-name"))m["o-name"]=t("errName");if(!val("o-phone"))m["o-phone"]=t("errPhone");if(!val("o-text"))m["o-text"]=t("errItem");
     if(Object.keys(m).length)return fail(m);
     S.requests.unshift({item:val("o-item")==="other"?"optOther":val("o-item"),name:val("o-name"),phone:val("o-phone"),size:val("o-size"),budget:Number(val("o-budget"))||0,when:val("o-when"),text:val("o-text")});
+    if(sb){
+      sb.from("custom_orders").insert([{item:val("o-item")==="other"?"optOther":val("o-item"),name:val("o-name"),phone:val("o-phone"),size:val("o-size"),budget:Number(val("o-budget"))||0,when_needed:val("o-when")||null,details:val("o-text")}]).then(({error})=>{if(error)console.warn("Supabase order error:",error)});
+    }
     save();errs={};prefill="";flash=t("ordSaved");flashView="order";render();
   }else if(f.id==="postForm"){
     const m={};if(!val("p-name"))m["p-name"]=t("errName");if(!val("p-text"))m["p-text"]=t("errText");
     if(Object.keys(m).length)return fail(m);
     S.posts.unshift({id:"u"+Date.now(),who:val("p-name"),text:val("p-text"),t:Date.now(),likes:0,comments:[],photo:pending.photo});
+    if(sb){
+      sb.from("community_posts").insert([{who:val("p-name"),text:val("p-text")}]).then(({error})=>{if(error)console.warn("Supabase post error:",error)});
+    }
     save();pending.photo="";errs={};render(true);
   }else if(f.dataset.cform){
     const inp=f.querySelector("input"),v=inp.value.trim();if(!v){inp.focus();return}

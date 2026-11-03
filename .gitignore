@@ -13,3 +13,9 @@ $RECYCLE.BIN/
 *.njsproj
 *.sln
 *.sw?
+
+# Sensitive environment variables and credentials
+.env
+.env.*
+*.env
+!.env.example
