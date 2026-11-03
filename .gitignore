@@ -13,6 +13,8 @@ $RECYCLE.BIN/
 *.njsproj
 *.sln
 *.sw?
+__pycache__/
+*.pyc
 
 # Sensitive environment variables and credentials
 .env

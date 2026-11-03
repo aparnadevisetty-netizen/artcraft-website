@@ -11,24 +11,24 @@ A simple website for **Durgi stone carvers** (Palnadu region, Andhra Pradesh). I
 - **Login:** phone number and password (see the note below)
 
 ## Run it
-No build step. Open `index.html` in a browser, or serve the folder:
+Run the built-in server connected directly to your Supabase PostgreSQL database:
 
 ```bash
-python3 -m http.server 8000
+python server.py 8000
 # open http://localhost:8000
 ```
 
-## Publish with GitHub Pages
-1. Push this folder to a GitHub repository.
-2. Go to **Settings > Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**, pick `main` and `/ (root)`, then save.
+This serves the static site and provides API endpoints connecting user registrations, logins, custom orders, and posts directly to your live Supabase cloud database.
 
 ## Project structure
 ```
+server.py       Python HTTP server with direct Supabase PostgreSQL database connection
+db.py           Supabase database helper script
 index.html      page structure
 css/style.css   styles (warm beige & terracotta artisanal palette)
-js/app.js       all pages, English/Telugu text, login and saving
+js/app.js       all pages, bilingual logic, auth & Supabase bridge
 assets/         high-resolution artisan and stone carving photography
+.env.example    template for database credentials
 .gitignore      ignored system and editor files
 ```
 

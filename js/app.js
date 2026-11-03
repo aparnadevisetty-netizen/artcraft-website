@@ -158,19 +158,70 @@ const SEED_POSTS=[
  {id:"p2",who:"Lakshmi Devi",text:{en:"A buyer asked me to pack a lamp for courier. What do you use inside the box?",te:"ఒక కొనుగోలుదారు దీపాన్ని కొరియర్‌లో పంపమన్నారు. మీరు పెట్టెలో ఏం వాడతారు?"},t:0,likes:1,comments:[],sample:true,photo:"assets/carving-lamp.jpg"}
 ];
 
-/* ---------- Supabase Cloud Database Client ---------- */
+/* ---------- Supabase Cloud Database Client & Direct Backend Bridge ---------- */
 const SUPABASE_URL = "https://qtircpfapqtedajuvznk.supabase.co";
-// Paste your public anon key here (from Supabase Dashboard > Project Settings > API)
 const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "";
 let sb = null;
-if (window.supabase && SUPABASE_ANON_KEY) {
+let useBackendApi = false;
+
+// Check if local backend connected to Supabase PostgreSQL is active
+async function checkBackend(){
   try {
-    sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    console.log("Supabase client initialized successfully");
-  } catch(e) {
-    console.warn("Supabase init error:", e);
+    const res = await fetch("/api/status", { cache: "no-store" });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.status === "connected") {
+        useBackendApi = true;
+        console.log("Connected to Supabase PostgreSQL via server API:", data);
+        updateDbIndicator(true);
+        syncFromCloud();
+        return;
+      }
+    }
+  } catch(e) {}
+  
+  if (window.supabase && SUPABASE_ANON_KEY) {
+    try {
+      sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      console.log("Connected to Supabase via JavaScript client");
+      updateDbIndicator(true);
+    } catch(e) {
+      console.warn("Supabase init error:", e);
+    }
   }
 }
+function updateDbIndicator(connected){
+  const el = document.getElementById("dbIndicator");
+  if(el){
+    el.innerHTML = connected 
+      ? `🟢 <span style="color:#246e45;font-weight:700">Supabase Connected (Cloud PostgreSQL)</span>`
+      : `⚪ Local Storage (Supabase Offline)`;
+  }
+}
+async function syncFromCloud(){
+  if (!useBackendApi) return;
+  try {
+    const [ordRes, wrkRes, pstRes] = await Promise.all([
+      fetch("/api/orders").then(r => r.json()).catch(() => null),
+      fetch("/api/works").then(r => r.json()).catch(() => null),
+      fetch("/api/posts").then(r => r.json()).catch(() => null)
+    ]);
+    if (ordRes && ordRes.orders && ordRes.orders.length) {
+      S.requests = ordRes.orders;
+    }
+    if (wrkRes && wrkRes.works && wrkRes.works.length) {
+      S.works = wrkRes.works;
+    }
+    if (pstRes && pstRes.posts && pstRes.posts.length) {
+      S.posts = [...pstRes.posts, ...SEED_POSTS];
+    }
+    save();
+    render(true);
+  } catch(e) {
+    console.warn("Sync from cloud error:", e);
+  }
+}
+checkBackend();
 
 /* ---------- saved data (browser storage fallback) ---------- */
 const KEY="hunar-setu-v1";
@@ -235,7 +286,8 @@ function chrome(){
     </div>`;
   bnav.setAttribute("aria-label",t("nav"));
   bnav.innerHTML=NAV.map(([k,l])=>`<a href="#${k}" ${v===k?'aria-current="page"':""}>${icon(k)}<span>${t(l)}</span></a>`).join("");
-  ftr.innerHTML=`<div>${t("foot")}</div><div>${t("foot2")}</div>`;
+  ftr.innerHTML=`<div>${t("foot")}</div><div>${t("foot2")}</div><div id="dbIndicator" style="margin-top:6px;font-size:0.85rem"></div>`;
+  updateDbIndicator(useBackendApi || (window.supabase && SUPABASE_ANON_KEY));
 }
 const flashHtml=()=>flash?`<div class="flash" role="status">${esc(flash)}</div>`:"";
 const field=(id,label,control,err)=>`<div class="field"><label for="${id}">${label}</label>${control}<div class="err" id="e-${id}" role="alert">${err?esc(err):""}</div></div>`;
@@ -487,10 +539,25 @@ async function doAuth(){
   if(Object.keys(m).length)return fail(m);
   try{
     if(reg){
-      if(sb){
+      const hp = await hashPw(pass);
+      if(useBackendApi){
+        // Direct Supabase PostgreSQL registration via local bridge
+        const res = await fetch("/api/auth/register", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({phone, name, hash: hp.hash, salt: hp.salt})
+        });
+        const data = await res.json();
+        if(res.status === 409 || data.error?.includes("already registered")) {
+          return fail({"u-phone": t("errExists")});
+        }
+        if(!res.ok) {
+          console.warn("Backend register error:", data);
+        }
+        S.users[phone] = {name, ...hp};
+      } else if(sb){
         const {data: existing} = await sb.from("app_users").select("phone").eq("phone", phone).maybeSingle();
         if(existing) return fail({"u-phone": t("errExists")});
-        const hp = await hashPw(pass);
         const {error: insErr} = await sb.from("app_users").insert([{
           phone,
           name,
@@ -501,10 +568,28 @@ async function doAuth(){
         S.users[phone] = {name, ...hp};
       } else {
         if(S.users[phone])return fail({"u-phone":t("errExists")});
-        S.users[phone]={name,...(await hashPw(pass))};
+        S.users[phone]={name,...hp};
       }
     }else{
-      if(sb){
+      if(useBackendApi){
+        // Direct Supabase PostgreSQL login check via local bridge
+        const res = await fetch("/api/auth/login", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({phone})
+        });
+        if(res.status === 404) {
+          return fail({"u-phone": t("errLogin")});
+        }
+        const data = await res.json();
+        if(!res.ok) return fail({"u-pass": t("errLogin")});
+        
+        const hp = await hashPw(pass, data.salt);
+        if(hp.hash !== data.hash) {
+          return fail({"u-pass": t("errLogin")});
+        }
+        S.users[phone] = {name: data.name, salt: data.salt, hash: data.hash};
+      } else if(sb){
         const {data: uDb, error: selErr} = await sb.from("app_users").select("*").eq("phone", phone).maybeSingle();
         if(selErr) console.warn("Supabase select error:", selErr);
         if(uDb){
