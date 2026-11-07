@@ -125,16 +125,27 @@ class SupabaseHandler(SimpleHTTPRequestHandler):
         elif path == "/api/posts":
             try:
                 con = get_db()
-                rows = con.run("SELECT id, who, text, photo_url, likes, created_at FROM public.community_posts ORDER BY created_at DESC LIMIT 50;")
+                rows = con.run("SELECT id, who, text, photo_url, likes, created_at, location, price, tags, comments_json FROM public.community_posts ORDER BY created_at DESC LIMIT 50;")
                 con.close()
                 posts = []
                 for r in rows:
+                    cmts = []
+                    if len(r) > 9 and r[9]:
+                        try:
+                            cmts = json.loads(r[9]) if isinstance(r[9], str) else r[9]
+                        except Exception:
+                            cmts = []
                     posts.append({
                         "id": str(r[0]),
-                        "who": r[1],
-                        "text": r[2],
+                        "who": r[1] or "Artisan",
+                        "text": r[2] or "",
                         "photo": r[3] or "",
-                        "likes": r[4] or 0
+                        "likes": int(r[4] or 0),
+                        "t": str(r[5]) if r[5] else "",
+                        "location": r[6] if len(r) > 6 and r[6] else "Durgi, Palnadu",
+                        "price": float(r[7]) if len(r) > 7 and r[7] else 0,
+                        "tags": r[8] if len(r) > 8 and r[8] else "#DurgiCraft #Handmade",
+                        "comments": cmts if isinstance(cmts, list) else []
                     })
                 return self.send_json(200, {"posts": posts})
             except Exception as e:
@@ -267,15 +278,58 @@ class SupabaseHandler(SimpleHTTPRequestHandler):
             body = self.read_json_body()
             try:
                 con = get_db()
-                con.run(
-                    "INSERT INTO public.community_posts (who, text, photo_url, likes) VALUES (:who, :text, :photo_url, :likes);",
-                    who=body.get("who", ""),
+                cmts_json = json.dumps(body.get("comments", []))
+                res = con.run(
+                    "INSERT INTO public.community_posts (who, text, photo_url, likes, location, price, tags, comments_json) VALUES (:who, :text, :photo_url, :likes, :loc, :price, :tags, :cmts) RETURNING id;",
+                    who=body.get("who", "Artisan"),
                     text=body.get("text", ""),
                     photo_url=body.get("photo", None),
-                    likes=int(body.get("likes", 0) or 0)
+                    likes=int(body.get("likes", 0) or 0),
+                    loc=body.get("location", "Durgi, Palnadu"),
+                    price=float(body.get("price", 0) or 0),
+                    tags=body.get("tags", "#DurgiCraft #Handmade"),
+                    cmts=cmts_json
                 )
+                new_id = str(res[0][0]) if res else None
+                con.close()
+                return self.send_json(200, {"success": True, "id": new_id})
+            except Exception as e:
+                return self.send_json(500, {"error": str(e)})
+
+        elif path == "/api/posts/like":
+            body = self.read_json_body()
+            post_id = body.get("id")
+            if not post_id:
+                return self.send_json(400, {"error": "Missing post id"})
+            try:
+                con = get_db()
+                con.run("UPDATE public.community_posts SET likes = likes + 1 WHERE id::text = :id;", id=str(post_id))
                 con.close()
                 return self.send_json(200, {"success": True})
+            except Exception as e:
+                return self.send_json(500, {"error": str(e)})
+
+        elif path == "/api/posts/comment":
+            body = self.read_json_body()
+            post_id = body.get("id")
+            who = body.get("who", "Visitor")
+            comment_text = body.get("text", "")
+            if not post_id or not comment_text:
+                return self.send_json(400, {"error": "Missing post id or comment text"})
+            try:
+                con = get_db()
+                cur = con.run("SELECT comments_json FROM public.community_posts WHERE id::text = :id;", id=str(post_id))
+                cmts = []
+                if cur and cur[0][0]:
+                    try:
+                        cmts = json.loads(cur[0][0])
+                    except Exception:
+                        cmts = []
+                import time
+                cmts.append({"who": who, "text": comment_text, "t": int(time.time() * 1000)})
+                con.run("UPDATE public.community_posts SET comments_json = :cmts WHERE id::text = :id;", cmts=json.dumps(cmts), id=str(post_id))
+                con.close()
+                return self.send_json(200, {"success": True, "comments": cmts})
             except Exception as e:
                 return self.send_json(500, {"error": str(e)})
 

@@ -69,8 +69,22 @@ en:{
  uploadedByBadge:"Artisan Upload",
  previewVideo:"Video Preview",
  cancel:"Cancel",
- comH:"Community", comP:"Share your work, ask a question, or give advice.",
- share:"Share your work or ask a question", post:"Post", addPhoto:"Add photo", like:"Like", feedback:"Write feedback", sendC:"Send",
+ comH:"Craft Showcase & Stories", comP:"Hand-chiseled stone art, workshop stories, and direct artisan updates from Durgi.",
+ shareCraftBtn:"+ Share Craft Post",
+ shareCraftH:"Share Craft on Feed",
+ shareCraftP:"Post photos of your carving with a description and story, just like on Instagram.",
+ captionLabel:"Craft Description & Story",
+ captionPlaceholder:"Write a caption describing your craft... (e.g. Durgi limestone type, carving tools, hours chiseled, temple sanctum details)...",
+ locationLabel:"Workshop / Location",
+ priceOptional:"Price in ₹ (Optional if for sale)",
+ tagsLabel:"Quick Tags:",
+ inquireCraft:"Inquire",
+ addCommentPlaceholder:"Add a comment for the carver...",
+ commentPostBtn:"Post",
+ postSharedSuccess:"Craft post shared to feed successfully!",
+ likeCountText:n=>`${n} ${n===1?"like":"likes"}`,
+ viewAllCommentsText:n=>`View all ${n} comments`,
+ share:"Share your work or ask a question", post:"Share Post", addPhoto:"Add Craft Photo", like:"Like", feedback:"Write feedback", sendC:"Send",
  justNow:"Just now", foot:"A college project to support Durgi stone carvers.", foot2:"Works on phone and computer.",
  nav:"Main",
  login:"Log in", logout:"Log out", hi:n=>`Hello, ${n}`, loginH:"Log in", loginP:"Enter your phone number and password.",
@@ -176,8 +190,22 @@ te:{
  uploadedByBadge:"శిల్పకారుడు అప్‌లోడ్ చేసినది",
  previewVideo:"వీడియో ప్రివ్యూ",
  cancel:"రద్దు",
- comH:"సమూహం", comP:"మీ పనిని పంచుకోండి, ప్రశ్న అడగండి, సలహా ఇవ్వండి.",
- share:"మీ పనిని పంచుకోండి లేదా ప్రశ్న అడగండి", post:"పోస్ట్ చేయండి", addPhoto:"ఫోటో జోడించండి", like:"ఇష్టం", feedback:"సలహా రాయండి", sendC:"పంపండి",
+ comH:"శిల్పకళా ప్రదర్శన & కథనాలు", comP:"దుర్గి శిల్పకారుల పనిశాలల నుండి నేరుగా లైవ్ అప్‌డేట్‌లు, చేతితో చెక్కిన శిల్పాలు మరియు కథనాలు.",
+ shareCraftBtn:"+ కొత్త శిల్పం పోస్ట్ చేయండి",
+ shareCraftH:"శిల్పాన్ని ఫీడ్‌లో పంచుకోండి",
+ shareCraftP:"మీరు చెక్కిన రాతి శిల్పం ఫోటో మరియు వివరణతో ఇన్‌స్టాగ్రామ్‌లా ప్రదర్శించండి.",
+ captionLabel:"శిల్పం వివరణ & కథ",
+ captionPlaceholder:"ఈ శిల్పం గురించి రాయండి... రాయి రకం, వాడిన ఉలులు, పట్టిన సమయం, ఆలయ విశేషాలు...",
+ locationLabel:"పనిశాల / ప్రాంతం",
+ priceOptional:"ధర ₹ (అమ్మకానికి ఉంటే)",
+ tagsLabel:"ట్యాగ్‌లు:",
+ inquireCraft:"వివరాలు అడగండి",
+ addCommentPlaceholder:"శిల్పకారునికి కామెంట్ రాయండి...",
+ commentPostBtn:"పోస్ట్",
+ postSharedSuccess:"శిల్పం విజయవంతంగా ఫీడ్‌లో పోస్ట్ చేయబడింది!",
+ likeCountText:n=>`${n} లైక్‌లు`,
+ viewAllCommentsText:n=>`మొత్తం ${n} కామెంట్‌లు చూడండి`,
+ share:"మీ పనిని పంచుకోండి లేదా ప్రశ్న అడగండి", post:"పోస్ట్ చేయండి", addPhoto:"శిల్పం ఫోటోను జోడించండి", like:"ఇష్టం", feedback:"సలహా రాయండి", sendC:"పంపండి",
  justNow:"ఇప్పుడే", foot:"దుర్గి శిల్పకారులకు మద్దతుగా ఒక కళాశాల ప్రాజెక్ట్.", foot2:"ఫోన్‌లో, కంప్యూటర్‌లో పనిచేస్తుంది.",
  nav:"ప్రధాన మెనూ",
  login:"లాగిన్", logout:"లాగౌట్", hi:n=>`నమస్కారం, ${n}`, loginH:"లాగిన్ అవ్వండి", loginP:"మీ ఫోన్ నంబర్, పాస్‌వర్డ్ ఇవ్వండి.",
@@ -304,8 +332,27 @@ const LESSONS=[
          "ప్రత్యేక శిల్పాలకు పరిమాణం, తేదీ రాతపూర్వకంగా అంగీకరించండి."]}}
 ];
 const SEED_POSTS=[
- {id:"p1",who:"Srinivas",text:{en:"Finished this lotus bowl after five days. Any advice on the polish?",te:"ఐదు రోజుల్లో ఈ కమలం కుండీ పూర్తి చేశాను. పాలిష్ గురించి ఏమైనా సలహా ఉందా?"},t:0,likes:3,comments:[{who:"Lakshmi Devi",text:{en:"Use finer paper on the petals, they will shine more.",te:"రేకులపై సన్నని కాగితం వాడండి, ఇంకా మెరుస్తాయి."}}],sample:true,photo:"assets/carving-lotus-bowl.jpg"},
- {id:"p2",who:"Lakshmi Devi",text:{en:"A buyer asked me to pack a lamp for courier. What do you use inside the box?",te:"ఒక కొనుగోలుదారు దీపాన్ని కొరియర్‌లో పంపమన్నారు. మీరు పెట్టెలో ఏం వాడతారు?"},t:0,likes:1,comments:[],sample:true,photo:"assets/carving-lamp.jpg"}
+ {id:"p1",who:"Srinivas Carvers",location:"Durgi Heritage Workshop · Palnadu",price:2200,tags:"#LotusUrli #DurgiStone #HandCarved #TempleArt",
+  text:{en:"🪷 Just completed this intricate Lotus Urli after 5 days of delicate chisel work! Carved out of a single block of authentic Durgi soft limestone. The petal contours took maximum patience and devotion. The natural stone texture looks breathtaking under morning light.\n\nDM or click Inquire for custom temple courtyards or home sanctums! ✨\n\n#DurgiStone #LotusUrli #HandCarved #IndianHandicrafts #TempleArt #StoneSculptor",
+        te:"🪷 5 రోజుల పాటు ఏకాగ్రతతో ఉలితో చెక్కిన అందమైన కమలం కుండీ (Lotus Urli) పూర్తయింది! ఒకే ఒక అసలైన దుర్గి సున్నపురాతిపై చెక్కబడింది. రేకుల అంచుల నాణ్యత ఎలా ఉందో మీ అభిప్రాయం చెప్పండి! గుడులకు మరియు పూజా మందిరాలకు సిద్ధంగా ఉంది.\n\nఆర్డర్ల కోసం ఇన్క్వైరీ బటన్ నొక్కండి! ✨\n\n#దుర్గిశిల్పకళ #కమలంకుండీ #చేతిపని #రాతిశిల్పం"},
+  t:Date.now()-86400000*2,likes:42,photo:"assets/carving-lotus-bowl.jpg",
+  comments:[{who:"Lakshmi Devi",text:{en:"Use finer 400 grit paper on the inner petals, it gives a brilliant mirror finish! Beautiful symmetry 🙏",te:"లోపలి రేకులపై సన్నని కాగితం వాడండి, అద్దంలా మెరుస్తుంది! చాలా అందంగా ఉంది 🙏"}},
+            {who:"Venkata Rao",text:{en:"Top tier craftsmanship, brother! The depth of the petals is master level.",te:"అద్భుతమైన శిల్ప చాతుర్యం సోదరా. రేకుల లోతు చాలా చక్కగా వచ్చింది."}}]},
+ {id:"p2",who:"Lakshmi Devi",location:"Durgi Craft Cluster · Andhra Pradesh",price:850,tags:"#StoneDeepam #TempleArt #DurgiCarving",
+  text:{en:"🪔 Sacred Five-Tier Stone Deepam Tower ready for consecration. Hand-grooved oil reservoir chiseled to hold pure sesame oil and cotton wicks without any seepage. Commissioned for a traditional temple sanctum.\n\nSafely crate-packed today with paddy straw cushioning! 🪨\n\n#StoneDeepam #TempleSanctum #HeritageCraft #DurgiArtisan #SacredArt #TempleLighting",
+        te:"🪔 పవిత్రమైన రాతి దీప స్తంభం (Stone Deepam) సిద్ధమైంది. తిరుపతిలో ఒక సాంప్రదాయ గుడి కోసం స్వయంగా చేతితో చెక్కినది. నూనె బయటకు కారకుండా ప్రత్యేక గాడులు చెక్కబడ్డాయి.\n\nఈ రోజే సురక్షిత చెక్క పెట్టెలో ప్యాక్ చేస్తున్నాం! 🪨\n\n#రాతిదీపం #ఆలయశిల్పం #దుర్గి #సాంప్రదాయకళ"},
+  t:Date.now()-86400000*3,likes:38,photo:"assets/carving-lamp.jpg",
+  comments:[{who:"Srinivas",text:{en:"The oil reservoir groove depth looks perfect for long temple aartis.",te:"దీపంలో నూనె నిలిచే లోతు చాలా సమతుల్యంగా వచ్చింది."}}]},
+ {id:"p3",who:"Venkata Rao",location:"Amaravati Shilpa Shala · Durgi",price:4500,tags:"#GaneshaIdol #DurgiCraft #ShilpaShastra #Valampuri",
+  text:{en:"🐘 Sri Siddhi Vinayaka chiseled in classical Shilpa Shastra proportions. The trunk turns auspiciously right (Valampuri) and the crown features micro-beading carved with fine needle chisels. Over 40 hours of ancestral craftsmanship!\n\nAvailable for custom sanctum installation. Inquire now. 🙏\n\n#GaneshaIdol #ValampuriGanesha #ShilpaShastra #DurgiStone #SacredSculpture #MadeInIndia",
+        te:"🐘 శిల్పశాస్త్ర ప్రమాణాల ప్రకారం చెక్కబడిన 12 అంగుళాల వినాయకుడి విగ్రహం. సూక్ష్మ ఉలితో కిరీటం మరియు దంతాల భాగం ఎంతో నిశితంగా తీర్చిదిద్దబడింది.\n\nమీ పూజా మందిరం కోసం ప్రత్యేక ఆర్డర్ ఇవ్వవచ్చు! 🙏\n\n#వినాయకుడు #రాతివిగ్రహం #శిల్పకళ #దుర్గి"},
+  t:Date.now()-86400000*4,likes:67,photo:"assets/carving-ganesha.jpg",
+  comments:[{who:"Ramesh Sharma",text:{en:"Magnificent detail on the trunk and modaka! Inquiring for my new home temple.",te:"తొండం మరియు మోదకం చెక్కడం చాలా అద్భుతంగా ఉంది!"}}]},
+ {id:"p4",who:"Master Carver Somanna",location:"Palnadu Temple Arts Guild",price:12000,tags:"#YaliPillar #TemplePillar #DurgiHeritage #Sculpture",
+  text:{en:"🏛️ Monolithic Yali & floral pillar sculptured for a temple mandapam. Notice the undercut floral tendrils and fierce guardian yali posture. Stone carvers in Durgi keeping centuries of Vijayanagara and Kakatiya temple traditions alive today!\n\n#TempleArchitecture #YaliPillar #KakatiyaArt #VijayanagaraHeritage #HandChiseled",
+        te:"🏛️ ఆలయ మండపం కోసం చెక్కిన ఏకశిలా యాళి స్తంభం. కాకతయ్య మరియు విజయనగర శైలి సాంప్రదాయాలను నేటికీ సజీవంగా ఉంచుతున్న దుర్గి శిల్పకారులు!\n\n#యాళిస్తంభం #ఆలయవాస్తు #దుర్గిశిల్పం #భారతీయకళ"},
+  t:Date.now()-86400000*5,likes:89,photo:"assets/carving-pillar.jpg",
+  comments:[{who:"Venkata Rao",text:{en:"True masterwork Somanna garu! An inspiration for all young carvers in our village.",te:"నిజమైన కళాఖండం సోమన్న గారు! మన ఊరి యువ శిల్పకారులందరికీ ఇది ఆదర్శం."}}]}
 ];
 
 /* ---------- Supabase Cloud Database Client & Direct Backend Bridge ---------- */
@@ -364,7 +411,9 @@ async function syncFromCloud(){
       S.works = wrkRes.works;
     }
     if (pstRes && pstRes.posts && pstRes.posts.length) {
-      S.posts = [...pstRes.posts, ...SEED_POSTS];
+      const dbIds = new Set(pstRes.posts.map(p => String(p.id)));
+      const extraSeeds = SEED_POSTS.filter(s => !dbIds.has(String(s.id)));
+      S.posts = [...pstRes.posts, ...extraSeeds];
     }
     if (lrnRes && lrnRes.lessons && lrnRes.lessons.length) {
       S.lessons = lrnRes.lessons;
@@ -387,6 +436,7 @@ function allLessons(){return (S.lessons && S.lessons.length) ? S.lessons : LESSO
 
 let flash="",flashView="",errs={},pending={photo:""},filter="all",prefill="";
 let learnFilter="all",showUploadLesson=false,pendingLessonVideo={data:"",name:"",url:""};
+let showPostCreator=false,postFilter="all",postFilterPreset="none",openComments={};
 const t=k=>{const v=T[S.lang][k];return v===undefined?T.en[k]:v};
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const loc=o=>typeof o==="string"?o:(o[S.lang]||o.en);
@@ -403,7 +453,11 @@ const IC={
  play:'<circle cx="12" cy="12" r="10" fill="none"/><path d="M10 8l6 4-6 4z" fill="currentColor"/>',
  heart:'<path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/>',
  video:'<polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>',
- upload:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>'
+ upload:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>',
+ comment:'<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>',
+ share:'<line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>',
+ bookmark:'<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>',
+ camera:'<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>'
 };
 const icon=(n,sw=2)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]}</svg>`;
 const ART={
@@ -820,24 +874,230 @@ function vLearn(){
   ` : `<p class="note">${t("noLessonsFound")}</p>`}`;
 }
 function ago(p){return p.t?new Date(p.t).toLocaleDateString(S.lang==="te"?"te-IN":"en-IN",{day:"numeric",month:"short"}):""}
+
+function formatHashtags(text){
+  const escaped=esc(text);
+  return escaped.replace(/#([\w\u0c00-\u0c7f]+)/g,'<a href="javascript:void(0)" class="insta-tag" data-feed-tag="$1">#$1</a>');
+}
+
 function postHtml(p){
   const liked=S.liked.includes(p.id);
-  const txt=typeof p.text==="string"?p.text:loc(p.text);
-  return `<article class="post"><header><div class="avatar" aria-hidden="true">${esc(p.who[0]||"?")}</div><div><b>${esc(p.who)}</b><br><span class="note">${p.sample?`<span class="tag sample">${t("sample")}</span>`:ago(p)}</span></div></header>
-   <p>${esc(txt)}</p>${p.photo?`<img class="pic" src="${p.photo}" alt="">`:""}
-   <div class="acts"><button class="btn small ${liked?"":"ghost"}" type="button" data-like="${p.id}" aria-pressed="${liked}">${icon("heart")} ${t("like")} · ${p.likes}</button></div>
-   ${p.comments.length?`<ul class="comments">${p.comments.map(c=>`<li><b>${esc(c.who)}:</b> ${esc(typeof c.text==="string"?c.text:loc(c.text))}</li>`).join("")}</ul>`:""}
-   <form class="cform" data-cform="${p.id}" novalidate><label class="sr" for="c-${p.id}" style="position:absolute;left:-9999px">${t("feedback")}</label><input id="c-${p.id}" placeholder="${t("feedback")}"><button class="btn small" type="submit">${t("sendC")}</button></form></article>`;
+  const rawTxt=typeof p.text==="string"?p.text:loc(p.text);
+  const formattedTxt=formatHashtags(rawTxt);
+  const comments=Array.isArray(p.comments)?p.comments:[];
+  const showAll=openComments[p.id];
+  const displayComments=showAll?comments:comments.slice(-2);
+  const authorInitial=(p.who&&p.who[0])?p.who[0]:"A";
+  const craftPhoto=p.photo||"assets/hero-stone-carver.jpg";
+
+  return `
+  <article class="insta-card" id="post-${p.id}">
+    <!-- Header -->
+    <header class="insta-card-header">
+      <div class="insta-user-info">
+        <div class="insta-mini-ring">
+          <div class="insta-mini-avatar">${esc(authorInitial)}</div>
+        </div>
+        <div class="insta-user-text">
+          <div class="insta-username-row">
+            <b>${esc(p.who)}</b>
+            <span class="verified-check" title="Verified Durgi Artisan">✓</span>
+          </div>
+          <span class="insta-meta-sub">📍 ${esc(p.location||'Durgi Workshop · Andhra Pradesh')} · ${ago(p)}</span>
+        </div>
+      </div>
+      ${p.price?`<span class="insta-header-badge">${rupees(p.price)}</span>`:''}
+    </header>
+
+    <!-- Media with Double Tap Heart -->
+    <div class="insta-media-box" data-dbl-like="${p.id}" title="Double-click to like">
+      <img src="${craftPhoto}" alt="${esc(p.who)} stone craft" style="${p.filter_preset&&p.filter_preset!=='none'?'filter:'+p.filter_preset+';':''}">
+      <div class="insta-heart-pop" id="heart-pop-${p.id}">❤️</div>
+      <span class="insta-floating-tag">🖐️ 100% Hand-Chiseled</span>
+    </div>
+
+    <!-- Actions Bar -->
+    <div class="insta-actions-bar">
+      <div class="insta-action-group">
+        <button class="insta-icon-btn ${liked?'liked':''}" type="button" data-like="${p.id}" aria-label="${t("like")}">
+          ${icon("heart")}
+        </button>
+        <button class="insta-icon-btn" type="button" data-focus-comment="${p.id}" aria-label="Comment">
+          ${icon("comment")}
+        </button>
+        <button class="btn small ghost insta-inquire-pill" type="button" data-ask="${esc(p.who)} - ${esc(p.tags||'Handcrafted Stone Art')}">
+          ✉️ ${t("inquireCraft")}
+        </button>
+      </div>
+      <div>
+        <button class="insta-icon-btn" type="button" data-share-craft="${p.id}" title="Share">
+          ${icon("share")}
+        </button>
+      </div>
+    </div>
+
+    <!-- Likes Count -->
+    <div class="insta-likes-bar">
+      <span>${t("likeCountText")(p.likes||0)}</span>
+    </div>
+
+    <!-- Caption / Description -->
+    <div class="insta-caption-box">
+      <b>${esc(p.who)}</b>
+      <span>${formattedTxt}</span>
+    </div>
+
+    <!-- Comments List -->
+    ${comments.length?`
+    <div class="insta-comments-wrap">
+      ${comments.length>2&&!showAll?`
+        <button class="insta-view-comments-btn" type="button" data-toggle-comments="${p.id}">
+          ${t("viewAllCommentsText")(comments.length)}
+        </button>
+      `:''}
+      <ul>
+        ${displayComments.map(c=>`
+          <li><b>${esc(c.who)}</b> <span>${esc(typeof c.text==="string"?c.text:loc(c.text))}</span></li>
+        `).join("")}
+      </ul>
+    </div>
+    `:''}
+
+    <!-- Add Comment Row -->
+    <form class="insta-comment-form" data-cform="${p.id}" novalidate>
+      <input class="insta-comment-input" id="c-${p.id}" placeholder="${t("addCommentPlaceholder")}">
+      <button class="insta-comment-post-btn" type="submit">${t("commentPostBtn")}</button>
+    </form>
+  </article>`;
 }
+
 function vCommunity(){
-  return `<section class="sec-head"><h1>${t("comH")}</h1><p class="lead">${t("comP")}</p></section>${banner()}
-  <form class="f" id="postForm" novalidate>
-    ${field("p-name",t("fName"),`<input id="p-name" autocomplete="name" value="${esc(me().name)}">`,errs["p-name"])}
-    ${field("p-text",t("share"),`<textarea id="p-text"></textarea>`,errs["p-text"])}
-    <div class="photo-pick"><label class="btn ghost file-btn small">${t("addPhoto")}<input id="p-photo" type="file" accept="image/*"></label><img id="p-prev" alt="" ${pending.photo?`src="${pending.photo}"`:"hidden"}></div>
-    <button class="btn" type="submit">${t("post")}</button></form>
-  <div class="feed">${S.posts.map(postHtml).join("")}</div>
-  <p class="note">${t("sampleNote")}</p>`;
+  const stories=[
+    {who:"Venkata Rao",img:"assets/carving-ganesha.jpg"},
+    {who:"Lakshmi Devi",img:"assets/carving-lamp.jpg"},
+    {who:"Srinivas",img:"assets/carving-lotus-bowl.jpg"},
+    {who:"Somanna",img:"assets/carving-pillar.jpg"},
+    {who:"Heritage",img:"assets/hero-stone-carver.jpg"}
+  ];
+
+  const postsList=(S.posts&&S.posts.length)?S.posts:SEED_POSTS;
+
+  return `${flashHtml()}
+  <section class="sec-head">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <div>
+        <h1>${t("comH")}</h1>
+        <p class="lead">${t("comP")}</p>
+      </div>
+      <button class="btn upload-trigger-btn" type="button" data-action="toggle-post-creator">
+        ${icon("camera")} ${t("shareCraftBtn")}
+      </button>
+    </div>
+  </section>
+
+  <!-- Artisan Stories Carousel -->
+  <div class="artisan-stories" role="region" aria-label="Artisan Stories">
+    <button class="story-item" type="button" data-action="toggle-post-creator" title="Share your craft">
+      <div class="story-ring" style="background:var(--brand)">
+        <div class="story-avatar" style="background:var(--brand);color:#fff">+</div>
+      </div>
+      <span class="story-name">${t("post")}</span>
+    </button>
+    ${stories.map(s=>`
+      <button class="story-item" type="button" data-story-filter="${esc(s.who)}">
+        <div class="story-ring">
+          <div class="story-avatar">
+            <img src="${s.img}" alt="${esc(s.who)}">
+          </div>
+        </div>
+        <span class="story-name">${esc(s.who.split(" ")[0])}</span>
+      </button>
+    `).join("")}
+  </div>
+
+  ${banner()}
+
+  <!-- Instagram Style Post Creator Form -->
+  ${showPostCreator?`
+  <div class="insta-creator-panel">
+    <div class="insta-creator-header">
+      <h3>${t("shareCraftH")}</h3>
+      <button class="btn small ghost" type="button" data-action="close-post-creator">✕</button>
+    </div>
+    <p class="note" style="margin-top:0">${t("shareCraftP")}</p>
+
+    <form class="f" id="postForm" style="box-shadow:none;border:none;padding:0;background:transparent;max-width:100%" novalidate>
+      <div class="field">
+        <label>${t("fPhoto")} *</label>
+        <div class="photo-pick">
+          <label class="btn ghost file-btn small">
+            ${icon("camera")} ${t("addPhoto")}
+            <input id="p-photo" type="file" accept="image/*">
+          </label>
+          <span class="note">Select a clear photo of your craft</span>
+        </div>
+      </div>
+
+      <div id="p-preview-box" class="insta-preview-box" style="${pending.photo?'':'display:none;'}">
+        <img id="p-prev" alt="Craft Preview" src="${pending.photo||''}" style="${postFilterPreset!=='none'?'filter:'+postFilterPreset:''}">
+      </div>
+
+      ${pending.photo?`
+      <div class="filter-presets">
+        <button type="button" class="filter-btn ${postFilterPreset==='none'?'active':''}" data-filter-preset="none">Original</button>
+        <button type="button" class="filter-btn ${postFilterPreset==='sepia(0.25) saturate(1.2)'?'active':''}" data-filter-preset="sepia(0.25) saturate(1.2)">Warm Stone</button>
+        <button type="button" class="filter-btn ${postFilterPreset==='sepia(0.5) contrast(1.15)'?'active':''}" data-filter-preset="sepia(0.5) contrast(1.15)">Heritage Gold</button>
+        <button type="button" class="filter-btn ${postFilterPreset==='contrast(1.2) brightness(0.95)'?'active':''}" data-filter-preset="contrast(1.2) brightness(0.95)">Chisel Drama</button>
+      </div>
+      `:''}
+
+      <div class="two">
+        <div class="field">
+          <label for="p-name">${t("fName")}</label>
+          <input id="p-name" autocomplete="name" value="${esc(me().name||'Master Artisan')}">
+        </div>
+        <div class="field">
+          <label for="p-location">${t("locationLabel")}</label>
+          <input id="p-location" value="Durgi Workshop · Andhra Pradesh">
+        </div>
+      </div>
+
+      <div class="two">
+        <div class="field">
+          <label for="p-price">${t("priceOptional")}</label>
+          <input id="p-price" type="number" min="0" placeholder="e.g. 4500">
+        </div>
+        <div class="field">
+          <label for="p-tags">Hashtags</label>
+          <input id="p-tags" value="#DurgiStone #HandCarved #TempleArt">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="p-text">${t("captionLabel")} *</label>
+        <textarea id="p-text" placeholder="${t("captionPlaceholder")}" style="min-height:7rem"></textarea>
+        
+        <div class="quick-tags-wrap">
+          <span style="font-size:.78rem;font-weight:700;color:var(--muted)">${t("tagsLabel")}</span>
+          ${["#DurgiStone","#HandCarved","#TempleArt","#GaneshaIdol","#LotusUrli","#StoneDeepam","#GIHandicraft","#CustomOrder"].map(tag=>`
+            <button type="button" class="tag-chip" data-append-tag="${tag}">${tag}</button>
+          `).join("")}
+        </div>
+        <div class="err" id="e-p-text"></div>
+      </div>
+
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:.6rem">
+        <button class="btn" type="submit" id="p-submit-btn">${t("post")}</button>
+        <button class="btn ghost" type="button" data-action="close-post-creator">${t("cancel")}</button>
+      </div>
+    </form>
+  </div>
+  `:''}
+
+  <!-- Feed List -->
+  <div class="insta-feed">
+    ${postsList.map(postHtml).join("")}
+  </div>`;
 }
 
 /* ---------- login (prototype: accounts live in this browser only; passwords are salted and hashed, never stored as typed) ---------- */
@@ -1034,8 +1294,32 @@ function shrink(file,cb){
 document.addEventListener("change",e=>{
   if(e.target.id==="a-photo"||e.target.id==="p-photo"){
     const f=e.target.files[0];if(!f)return;
-    const prev=document.getElementById(e.target.id==="a-photo"?"a-prev":"p-prev");
-    shrink(f,url=>{pending.photo=url;if(url){prev.src=url;prev.hidden=false}});
+    shrink(f,url=>{
+      pending.photo=url;
+      if(e.target.id==="p-photo"){
+        const box=document.getElementById("p-preview-box");
+        const prev=document.getElementById("p-prev");
+        if(box&&prev&&url){
+          prev.src=url;
+          box.style.display="flex";
+        }
+        let filterWrap=document.querySelector(".filter-presets");
+        if(!filterWrap&&box){
+          const div=document.createElement("div");
+          div.className="filter-presets";
+          div.innerHTML=`
+            <button type="button" class="filter-btn active" data-filter-preset="none">Original</button>
+            <button type="button" class="filter-btn" data-filter-preset="sepia(0.25) saturate(1.2)">Warm Stone</button>
+            <button type="button" class="filter-btn" data-filter-preset="sepia(0.5) contrast(1.15)">Heritage Gold</button>
+            <button type="button" class="filter-btn" data-filter-preset="contrast(1.2) brightness(0.95)">Chisel Drama</button>
+          `;
+          box.after(div);
+        }
+      }else{
+        const prev=document.getElementById("a-prev");
+        if(url&&prev){prev.src=url;prev.hidden=false}
+      }
+    });
   }
   if(e.target.id==="ul-file"){
     const f=e.target.files[0];
@@ -1063,6 +1347,34 @@ document.addEventListener("input",e=>{
   }
 });
 
+/* Double-click / double-tap to like craft post */
+document.addEventListener("dblclick", e => {
+  const mediaBox = e.target.closest("[data-dbl-like]");
+  if (!mediaBox) return;
+  const pid = mediaBox.dataset.dblLike;
+  const heart = document.getElementById("heart-pop-" + pid);
+  if (heart) {
+    heart.classList.remove("pop");
+    void heart.offsetWidth;
+    heart.classList.add("pop");
+    setTimeout(() => heart.classList.remove("pop"), 850);
+  }
+  const p = S.posts.find(x => String(x.id) === String(pid));
+  if (p && !S.liked.includes(p.id)) {
+    S.liked.push(p.id);
+    p.likes = (p.likes || 0) + 1;
+    save();
+    if (useBackendApi) {
+      fetch("/api/posts/like", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({id: p.id})
+      }).catch(err => console.warn("Like sync error:", err));
+    }
+    render(true);
+  }
+});
+
 /* ---------- actions ---------- */
 const val=id=>(document.getElementById(id)||{}).value?.trim()||"";
 function fail(map){errs=map;const keys=Object.keys(map);
@@ -1077,6 +1389,79 @@ document.addEventListener("click",e=>{
   if(e.target.closest('[data-action="close-upload-lesson"]')){
     showUploadLesson=false;
     render(true);
+    return;
+  }
+  if(e.target.closest('[data-action="toggle-post-creator"]')){
+    if(!S.session) return needLogin();
+    showPostCreator = !showPostCreator;
+    render(true);
+    return;
+  }
+  if(e.target.closest('[data-action="close-post-creator"]')){
+    showPostCreator = false;
+    render(true);
+    return;
+  }
+  const storyBtn = e.target.closest("[data-story-filter]");
+  if(storyBtn){
+    const author = storyBtn.dataset.storyFilter;
+    const postEl = Array.from(document.querySelectorAll(".insta-card")).find(el => el.textContent.includes(author));
+    if(postEl){
+      postEl.scrollIntoView({behavior: "smooth", block: "center"});
+      postEl.style.boxShadow = "0 0 0 3px var(--brand)";
+      setTimeout(() => postEl.style.boxShadow = "", 1500);
+    }
+    return;
+  }
+  const filterBtn = e.target.closest("[data-filter-preset]");
+  if(filterBtn){
+    postFilterPreset = filterBtn.dataset.filterPreset;
+    const prev = document.getElementById("p-prev");
+    if(prev) prev.style.filter = postFilterPreset !== "none" ? postFilterPreset : "";
+    document.querySelectorAll(".filter-presets .filter-btn").forEach(b => {
+      b.classList.toggle("active", b === filterBtn);
+    });
+    return;
+  }
+  const tagChip = e.target.closest("[data-append-tag]");
+  if(tagChip){
+    const tag = tagChip.dataset.appendTag;
+    const ta = document.getElementById("p-text");
+    if(ta){
+      ta.value = ta.value ? (ta.value.trim() + " " + tag) : tag;
+      ta.focus();
+    }
+    return;
+  }
+  const toggleCmtsBtn = e.target.closest("[data-toggle-comments]");
+  if(toggleCmtsBtn){
+    const pid = toggleCmtsBtn.dataset.toggleComments;
+    openComments[pid] = !openComments[pid];
+    render(true);
+    return;
+  }
+  const focusCmtBtn = e.target.closest("[data-focus-comment]");
+  if(focusCmtBtn){
+    const pid = focusCmtBtn.dataset.focusComment;
+    const inp = document.getElementById("c-" + pid);
+    if(inp){
+      inp.focus();
+      inp.scrollIntoView({behavior: "smooth", block: "center"});
+    }
+    return;
+  }
+  const shareBtn = e.target.closest("[data-share-craft]");
+  if(shareBtn){
+    const pid = shareBtn.dataset.shareCraft;
+    const p = S.posts.find(x => String(x.id) === String(pid));
+    const title = p ? `Stone Craft by ${p.who} on Hunar Setu` : "Hunar Setu Stone Craft";
+    const shareUrl = window.location.origin + window.location.pathname + "#community";
+    if(navigator.share){
+      navigator.share({title, text: p ? (typeof p.text==="string"?p.text:loc(p.text)) : "", url: shareUrl}).catch(()=>{});
+    } else {
+      navigator.clipboard?.writeText(shareUrl + " - " + title);
+      alert(S.lang === "te" ? "లింక్ కాపీ చేయబడింది!" : "Craft post link copied to clipboard!");
+    }
     return;
   }
   const lFilterBtn=e.target.closest('[data-learn-filter]');
@@ -1100,8 +1485,36 @@ document.addEventListener("click",e=>{
   else if(b.dataset.filter){filter=b.dataset.filter;render(true)}
   else if(b.dataset.ask){prefill=(S.lang==="te"?"ఈ శిల్పం గురించి: ":"About: ")+b.dataset.ask+"\n";flash="";location.hash="#order";setTimeout(()=>{const x=document.getElementById("o-item");if(x&&b.dataset.kind)x.value=b.dataset.kind},0)}
   else if(b.dataset.done){const id=b.dataset.done;S.done=S.done.includes(id)?S.done.filter(x=>x!==id):[...S.done,id];save();render(true)}
-  else if(b.dataset.like){if(!S.session)return needLogin();const p=S.posts.find(x=>x.id===b.dataset.like);if(!p)return;
-    if(S.liked.includes(p.id)){S.liked=S.liked.filter(x=>x!==p.id);p.likes--}else{S.liked.push(p.id);p.likes++}save();render(true)}
+  else if(b.dataset.like){
+    if(!S.session)return needLogin();
+    const pid = b.dataset.like;
+    const p = S.posts.find(x => String(x.id) === String(pid));
+    if(!p) return;
+    const wasLiked = S.liked.includes(p.id);
+    if(wasLiked){
+      S.liked = S.liked.filter(x => x !== p.id);
+      p.likes = Math.max(0, (p.likes || 1) - 1);
+    } else {
+      S.liked.push(p.id);
+      p.likes = (p.likes || 0) + 1;
+      const heart = document.getElementById("heart-pop-" + pid);
+      if(heart){
+        heart.classList.remove("pop");
+        void heart.offsetWidth;
+        heart.classList.add("pop");
+        setTimeout(() => heart.classList.remove("pop"), 850);
+      }
+      if(useBackendApi){
+        fetch("/api/posts/like", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({id: p.id})
+        }).catch(err => console.warn("Like sync error:", err));
+      }
+    }
+    save();
+    render(true);
+  }
 });
 
 async function handleUploadLesson(f){
@@ -1220,17 +1633,96 @@ document.addEventListener("submit",e=>{
     }
     save();errs={};prefill="";flash=t("ordSaved");flashView="order";render();
   }else if(f.id==="postForm"){
-    const m={};if(!val("p-name"))m["p-name"]=t("errName");if(!val("p-text"))m["p-text"]=t("errText");
-    if(Object.keys(m).length)return fail(m);
-    S.posts.unshift({id:"u"+Date.now(),who:val("p-name"),text:val("p-text"),t:Date.now(),likes:0,comments:[],photo:pending.photo});
-    if(sb){
-      sb.from("community_posts").insert([{who:val("p-name"),text:val("p-text")}]).then(({error})=>{if(error)console.warn("Supabase post error:",error)});
+    const who = val("p-name") || me().name || "Master Artisan";
+    const text = val("p-text");
+    const locStr = val("p-location") || "Durgi Workshop · Andhra Pradesh";
+    const priceVal = Number(val("p-price")) || 0;
+    const tagsVal = val("p-tags") || "#DurgiStone #HandCarved #TempleArt";
+    const craftPhoto = pending.photo || "assets/carving-lotus-bowl.jpg";
+
+    const m={};
+    if(!who) m["p-name"] = t("errName");
+    if(!text) m["p-text"] = t("errText");
+    if(Object.keys(m).length) return fail(m);
+
+    const submitBtn = document.getElementById("p-submit-btn");
+    if(submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Posting..."; }
+
+    const newPost = {
+      id: "u" + Date.now(),
+      who: who,
+      location: locStr,
+      price: priceVal,
+      tags: tagsVal,
+      text: text,
+      photo: craftPhoto,
+      filter_preset: postFilterPreset,
+      likes: 0,
+      comments: [],
+      t: Date.now()
+    };
+
+    if(useBackendApi){
+      fetch("/api/posts", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          who: newPost.who,
+          text: newPost.text,
+          location: newPost.location,
+          price: newPost.price,
+          tags: newPost.tags,
+          photo: newPost.photo,
+          likes: 0,
+          comments: []
+        })
+      }).then(r => r.json()).then(data => {
+        if(data && data.id) newPost.id = data.id;
+      }).catch(err => console.warn("Supabase post sync error:", err));
+    } else if(sb){
+      sb.from("community_posts").insert([{
+        who: newPost.who,
+        text: newPost.text,
+        location: newPost.location,
+        price: newPost.price,
+        tags: newPost.tags,
+        photo_url: newPost.photo,
+        likes: 0,
+        comments_json: "[]"
+      }]).then(({error}) => { if(error) console.warn("Supabase post error:", error); });
     }
-    save();pending.photo="";errs={};render(true);
+
+    S.posts.unshift(newPost);
+    save();
+    pending.photo = "";
+    showPostCreator = false;
+    postFilterPreset = "none";
+    errs = {};
+    flash = S.lang === "te" ? "మీ శిల్పం విజయవంతంగా ప్రచురించబడింది! ✨" : "Your craft post has been shared with the community! ✨";
+    flashView = "community";
+    render(true);
   }else if(f.dataset.cform){
-    const inp=f.querySelector("input"),v=inp.value.trim();if(!v){inp.focus();return}
-    const p=S.posts.find(x=>x.id===f.dataset.cform);
-    p.comments.push({who:me().name||(S.lang==="te"?"మీరు":"You"),text:v});save();render(true);
+    const inp = f.querySelector("input");
+    const v = inp ? inp.value.trim() : "";
+    if(!v) { if(inp) inp.focus(); return; }
+    const pid = f.dataset.cform;
+    const p = S.posts.find(x => String(x.id) === String(pid));
+    if(!p) return;
+    const commenter = me().name || (S.lang === "te" ? "మీరు" : "You");
+    const newCmt = { who: commenter, text: v, t: Date.now() };
+    if(!Array.isArray(p.comments)) p.comments = [];
+    p.comments.push(newCmt);
+    if(inp) inp.value = "";
+
+    if(useBackendApi){
+      fetch("/api/posts/comment", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({id: p.id, who: commenter, text: v})
+      }).catch(err => console.warn("Supabase comment sync error:", err));
+    }
+    save();
+    render(true);
   }
 });
 // Track when user clicks the Log in button vs Back to Home
