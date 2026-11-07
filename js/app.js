@@ -50,10 +50,23 @@ en:{
  quoteTextLogin:"Every sacred contour in stone reflects centuries of devotion and patience. Step inside Hunar Setu.",
  featuredH:"Featured Stone Masterpieces",
  featuredP:"Authentic hand-carved stone art chiseled by Durgi master artisans.",
- viewFullGallery:"View Full Gallery & More Carvings →",
+ viewFullGallery:"View Full Gallery →",
  heroSub:"Direct from the master carvers of Durgi to temples, homes, and collectors. Commission custom stone idols, lamps, urlis, and pillars.",
  exploreGal:"Explore Gallery",
  reqOrder:"Custom Order",
+ trust1:"Centuries of Heritage",
+ trust2:"100% Hand-Chiseled",
+ trust3:"Authentic Durgi Stone",
+ trust4:"Direct Artisan Support",
+ categoriesH:"Explore by Craft",
+ categoriesP:"Handmade limestone and sandstone creations chiseled in Durgi",
+ howSub:"Three simple steps from master artisan to your temple or home",
+ step1Title:"1. Select or Request",
+ step1Desc:"Browse authentic hand-carved pieces or describe your custom piece.",
+ step2Title:"2. Connect Directly",
+ step2Desc:"Agree on dimensions, stone grade, time, and price with the carver.",
+ step3Title:"3. Crafted & Delivered",
+ step3Desc:"Artisan hand-chisels your piece, safely packs in crates, and delivers.",
  errPhoneBad:"Write a correct 10-digit mobile number.", errPass:"The password must have at least 6 characters.", errLogin:"The phone number or password is wrong.",
  errExists:"This number already has an account. Please log in.", errCrypto:"Login does not work in this browser. Try another browser.",
  needLogin:"Please log in first to do this.", loggedIn:"You are logged in.", regDone:"Your account is ready. Welcome!", loggedOut:"You are logged out.", youIn:"Logged in with",
@@ -113,6 +126,19 @@ te:{
  heroSub:"దుర్గి శిల్పకారుల చేతుల మీదుగా నేరుగా గుడులకు, ఇళ్లకు మరియు భక్తులకు చేరే పవిత్ర రాతి విగ్రహాలు, దీపాలు మరియు స్తంభాలు.",
  exploreGal:"గ్యాలరీ చూడండి",
  reqOrder:"ప్రత్యేక ఆర్డర్",
+ trust1:"శతాబ్దాల ఘన చరిత్ర",
+ trust2:"100% చేతితో చెక్కినది",
+ trust3:"అసలైన దుర్గి రాయి",
+ trust4:"శిల్పకారులకు నేరుగా మద్దతు",
+ categoriesH:"శిల్ప వర్గాలు",
+ categoriesP:"దుర్గిలో చేతితో రూపొందించబడిన రాతి కళారూపాలు",
+ howSub:"శిల్పకారుని ఉలి నుండి మీ ఇంటి లేదా గుడి పూజా మందిరానికి 3 సులువైన దశలు",
+ step1Title:"1. ఎంచుకోండి లేదా అడగండి",
+ step1Desc:"శిల్పాలను చూడండి లేదా మీకు కావలసిన ప్రత్యేక శిల్పాన్ని చెప్పండి.",
+ step2Title:"2. నేరుగా మాట్లాడండి",
+ step2Desc:"రాయి రకం, పరిమాణం, సమయం మరియు ధరను శిల్పకారునితో నేరుగా నిర్ణయించండి.",
+ step3Title:"3. చెక్కి సురక్షితంగా డెలివరీ",
+ step3Desc:"శిల్పకారుడు స్వయంగా చెక్కి, చెక్క పెట్టెల్లో సురక్షితంగా ప్యాక్ చేసి పంపుతారు.",
  errPhoneBad:"10 అంకెల సరైన మొబైల్ నంబర్ రాయండి.", errPass:"పాస్‌వర్డ్ కనీసం 6 అక్షరాలు ఉండాలి.", errLogin:"ఫోన్ నంబర్ లేదా పాస్‌వర్డ్ తప్పు.",
  errExists:"ఈ నంబర్‌తో ఇప్పటికే ఖాతా ఉంది. దయచేసి లాగిన్ అవ్వండి.", errCrypto:"ఈ బ్రౌజర్‌లో లాగిన్ పనిచేయడం లేదు. వేరే బ్రౌజర్ ప్రయత్నించండి.",
  needLogin:"ఇది చేయడానికి ముందు లాగిన్ అవ్వండి.", loggedIn:"లాగిన్ అయ్యారు.", regDone:"మీ ఖాతా సిద్ధం. స్వాగతం!", loggedOut:"లాగౌట్ అయ్యారు.", youIn:"లాగిన్ అయిన నంబర్:",
@@ -294,10 +320,19 @@ const field=(id,label,control,err)=>`<div class="field"><label for="${id}">${lab
 
 /* ---------- views ---------- */
 function vHome(){
-  const tiles=[["add","t1","add"],["gallery","t2","gallery"],["order","t3","order"],["learn","t4","learn"],["community","t5","community"]];
   const featured = SAMPLE_WORKS.slice(0, 4);
+  const categories = [
+    {k:"idol", h:"idol", d:"t2d", i:"gallery"},
+    {k:"lamp", h:"lamp", d:"t2d", i:"gallery"},
+    {k:"decor", h:"decor", d:"t2d", i:"gallery"},
+    {k:"pillar", h:"pillar", d:"t2d", i:"gallery"},
+    {k:"order", h:"t3", d:"t3d", i:"order", href:"#order"},
+    {k:"add", h:"t1", d:"t1d", i:"add", href:"#add"}
+  ];
   return `
   ${flashHtml()}
+  
+  <!-- Grand Hero Banner -->
   <section class="grand-hero">
     <div class="grand-hero-visual">
       <img src="assets/hero-stone-carver.jpg" alt="Durgi master artisan chiseling stone carving in workshop" class="grand-hero-img">
@@ -323,8 +358,17 @@ function vHome(){
     </div>
   </section>
 
-  <section class="featured-section">
-    <div class="featured-header">
+  <!-- Neat Trust Bar -->
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-ico">🏛️</span><b>${t("trust1")}</b></div>
+    <div class="trust-item"><span class="trust-ico">🖐️</span><b>${t("trust2")}</b></div>
+    <div class="trust-item"><span class="trust-ico">🪨</span><b>${t("trust3")}</b></div>
+    <div class="trust-item"><span class="trust-ico">🤝</span><b>${t("trust4")}</b></div>
+  </div>
+
+  <!-- Featured Masterpieces Section -->
+  <section class="landing-card featured-section">
+    <div class="section-top-header">
       <div>
         <span class="tag">${t("tag")}</span>
         <h2>${t("featuredH")}</h2>
@@ -354,16 +398,61 @@ function vHome(){
         </article>`;
       }).join("")}
     </div>
-    
-    <div class="featured-footer-cta">
-      <a class="btn" href="#gallery">${t("viewFullGallery")}</a>
+  </section>
+
+  <!-- Explore Categories Section -->
+  <section class="landing-card categories-section">
+    <div class="section-top-header">
+      <div>
+        <span class="tag">${t("tagline")}</span>
+        <h2>${t("categoriesH")}</h2>
+        <p class="lead">${t("categoriesP")}</p>
+      </div>
+    </div>
+    <div class="craft-grid">
+      ${categories.map(c => `
+        <a class="craft-tile" href="${c.href || '#gallery'}" ${!c.href ? `data-cat="${c.k}"` : ""}>
+          <span class="craft-ico">${icon(c.i)}</span>
+          <div class="craft-info">
+            <b>${t(c.h)}</b>
+            <span class="craft-sub">${t(c.d)}</span>
+          </div>
+        </a>
+      `).join("")}
     </div>
   </section>
 
-  <section class="tiles">${tiles.map(([h,k,i])=>`<a class="tile" href="#${h}"><span class="ico">${icon(i)}</span><span><b>${t(k)}</b><span class="d">${t(k+"d")}</span></span></a>`).join("")}</section>
-  <section class="sec-head"><h2>${t("howH")}</h2></section>
-  <ol class="steps">${[1,2,3].map(n=>`<li><b>${t("h"+n)}</b>${t("h"+n+"d")}</li>`).join("")}</ol>
-  <p class="note">${t("sampleNote")}</p>`;
+  <!-- How It Works Section -->
+  <section class="landing-card how-section">
+    <div class="section-top-header">
+      <div>
+        <h2>${t("howH")}</h2>
+        <p class="lead">${t("howSub")}</p>
+      </div>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <span class="step-num">1</span>
+        <b>${t("step1Title")}</b>
+        <p>${t("step1Desc")}</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">2</span>
+        <b>${t("step2Title")}</b>
+        <p>${t("step2Desc")}</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">3</span>
+        <b>${t("step3Title")}</b>
+        <p>${t("step3Desc")}</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="sample-note-box">
+    <span class="sample-note-ico">ℹ️</span>
+    <p>${t("sampleNote")}</p>
+  </div>`;
 }
 function allWorks(){return [...S.works,...SAMPLE_WORKS]}
 function card(w){
@@ -631,26 +720,7 @@ window.addEventListener("hashchange",()=>{
   prevHash=hh;pending.photo="";errs={};
   if(view()!==flashView)flash="";
   if(view()!=="order")prefill="";
-  // Track when user clicks the Log in button vs Back to Home
-document.addEventListener("click", e => {
-  const loginLnk = e.target.closest('a[href="#login"]');
-  if (loginLnk) {
-    sessionStorage.setItem("hunar_user_clicked_login", "1");
-  }
-  const homeLnk = e.target.closest('a[href="#home"], .brand, .back-btn');
-  if (homeLnk) {
-    sessionStorage.removeItem("hunar_user_clicked_login");
-  }
-});
-
-// Ensure initial visit ALWAYS opens the landing page (#home)
-const initH = location.hash;
-const hasClickedLogin = sessionStorage.getItem("hunar_user_clicked_login") === "1";
-if (!initH || initH === "" || initH === "#" || (initH === "#login" && !hasClickedLogin)) {
-  location.hash = "#home";
-}
-
-render();
+  render();
 });
 
 /* ---------- photo: shrink before saving so storage does not fill up ---------- */
@@ -677,6 +747,13 @@ function fail(map){errs=map;const keys=Object.keys(map);
   keys.forEach(k=>{const el=document.getElementById("e-"+k);if(el)el.textContent=map[k]});
   const first=document.getElementById(keys[0]);if(first)first.focus()}
 document.addEventListener("click",e=>{
+  const catLink = e.target.closest("a[data-cat]");
+  if(catLink){
+    filter = catLink.dataset.cat;
+    location.hash = "#gallery";
+    render();
+    return;
+  }
   const b=e.target.closest("button");if(!b)return;
   if(b.dataset.lang){S.lang=b.dataset.lang;save();render(true)}
   else if(b.dataset.logout!==undefined){logout()}
