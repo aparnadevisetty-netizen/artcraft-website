@@ -140,6 +140,35 @@ class SupabaseHandler(SimpleHTTPRequestHandler):
             except Exception as e:
                 return self.send_json(500, {"error": str(e)})
 
+        elif path == "/api/lessons":
+            try:
+                con = get_db()
+                rows = con.run("SELECT id, title, title_te, min_duration, video_url, poster_url, category, steps_json, uploaded_by, created_at FROM public.craft_lessons ORDER BY id ASC LIMIT 50;")
+                con.close()
+                lessons = []
+                for r in rows:
+                    steps = {}
+                    if r[7]:
+                        try:
+                            steps = json.loads(r[7])
+                        except Exception:
+                            steps = {"en": [r[7]], "te": [r[7]]}
+                    lessons.append({
+                        "id": "l" + str(r[0]),
+                        "min": r[3] or 5,
+                        "en": r[1] or "",
+                        "te": r[2] or r[1] or "",
+                        "video": r[4] or "",
+                        "poster": r[5] or "",
+                        "cat": r[6] or "carving",
+                        "s": steps,
+                        "by": r[8] or "Artisan",
+                        "t": str(r[9]) if r[9] else ""
+                    })
+                return self.send_json(200, {"lessons": lessons})
+            except Exception as e:
+                return self.send_json(500, {"error": str(e)})
+
         # Default static file handler
         return super().do_GET()
 
@@ -247,6 +276,58 @@ class SupabaseHandler(SimpleHTTPRequestHandler):
                 )
                 con.close()
                 return self.send_json(200, {"success": True})
+            except Exception as e:
+                return self.send_json(500, {"error": str(e)})
+
+        elif path == "/api/upload-video":
+            body = self.read_json_body()
+            filename = body.get("filename", "")
+            data_b64 = body.get("data", "")
+            if not filename or not data_b64:
+                return self.send_json(400, {"error": "Missing filename or video data"})
+            
+            if "," in data_b64:
+                data_b64 = data_b64.split(",", 1)[1]
+            
+            import base64, re, time
+            clean_name = re.sub(r'[^a-zA-Z0-9_\-\.]', '_', filename)
+            target_name = f"uploaded_{int(time.time())}_{clean_name}"
+            target_dir = os.path.join(os.getcwd(), "assets", "videos")
+            os.makedirs(target_dir, exist_ok=True)
+            target_path = os.path.join(target_dir, target_name)
+            
+            try:
+                raw_bytes = base64.b64decode(data_b64)
+                with open(target_path, "wb") as f:
+                    f.write(raw_bytes)
+                rel_url = f"assets/videos/{target_name}"
+                return self.send_json(200, {"success": True, "video_url": rel_url, "size": len(raw_bytes)})
+            except Exception as e:
+                return self.send_json(500, {"error": f"Failed to save video: {str(e)}"})
+
+        elif path == "/api/lessons":
+            body = self.read_json_body()
+            title = body.get("en") or body.get("title", "")
+            title_te = body.get("te") or body.get("title_te", title)
+            min_duration = int(body.get("min", 5) or 5)
+            video_url = body.get("video", "")
+            poster_url = body.get("poster", "assets/hero-stone-carver.jpg")
+            category = body.get("cat", "carving")
+            steps = body.get("s", {})
+            steps_json = json.dumps(steps) if isinstance(steps, (dict, list)) else str(steps)
+            uploaded_by = body.get("by", "Artisan")
+
+            if not title or not video_url:
+                return self.send_json(400, {"error": "Title and video are required"})
+
+            try:
+                con = get_db()
+                new_id = con.run(
+                    "INSERT INTO public.craft_lessons (title, title_te, min_duration, video_url, poster_url, category, steps_json, uploaded_by) VALUES (:t, :tte, :m, :v, :p, :c, :s, :u) RETURNING id;",
+                    t=title, tte=title_te, m=min_duration, v=video_url, p=poster_url, c=category, s=steps_json, u=uploaded_by
+                )[0][0]
+                con.close()
+                return self.send_json(200, {"success": True, "id": "l" + str(new_id)})
             except Exception as e:
                 return self.send_json(500, {"error": str(e)})
 

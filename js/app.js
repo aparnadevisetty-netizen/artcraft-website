@@ -31,9 +31,44 @@ en:{
  send:"Send request", ordSaved:"Request saved. On the live platform it goes straight to the carver.",
  yourReq:"Your requests", noReq:"No requests yet.", nothing:"Nothing here yet.",
  optOther:"Something else",
- lrnH:"Learn new skills", lrnP:"Short lessons for carvers who want to sell more.",
+ lrnH:"Learn new skills", lrnP:"Short video lessons and tutorials for stone carvers.",
  soon:"Video coming soon", steps:"Read the key steps", markDone:"Mark as done", done:"Done", min:"min",
  progress:(n,m)=>`${n} of ${m} lessons done`,
+ uploadLessonBtn:"+ Upload Video Lesson",
+ uploadLessonH:"Upload Craft Video Lesson",
+ uploadLessonP:"Share your stone carving techniques, chiseling skills, or advice with fellow artisans.",
+ vidFileLabel:"Select Video File (MP4, WebM)",
+ vidUrlLabel:"Or Enter Video / YouTube Link",
+ lTitleEn:"Lesson Title (English)",
+ lTitleTe:"Lesson Title (Telugu)",
+ lDuration:"Duration (minutes)",
+ lCategory:"Craft Category",
+ lSteps:"Key Instructions (one per line)",
+ lAuthor:"Instructor / Artisan Name",
+ lSubmitBtn:"Upload Video Lesson",
+ lUploading:"Uploading video...",
+ lUploadSuccess:"Video lesson uploaded and published successfully!",
+ lUploadErr:"Please select a valid video file or enter a video URL.",
+ watchMasterclass:"Watch Masterclass on YouTube",
+ watchVideo:"Play Video",
+ filterAll:"All Lessons",
+ filterCarving:"Carving",
+ filterStoneCheck:"Stone Selection",
+ filterPolishing:"Polishing",
+ filterPacking:"Packing",
+ filterPricing:"Pricing & Sales",
+ filterUploads:"Artisan Uploads",
+ catCarving:"Carving & Chiseling",
+ catStoneCheck:"Stone Selection",
+ catPolishing:"Polishing & Finishing",
+ catPacking:"Packing & Safe Delivery",
+ catPricing:"Pricing & Quotation",
+ catPhotography:"Craft Photography",
+ catSales:"Client Orders & Sales",
+ noLessonsFound:"No video lessons found in this category.",
+ uploadedByBadge:"Artisan Upload",
+ previewVideo:"Video Preview",
+ cancel:"Cancel",
  comH:"Community", comP:"Share your work, ask a question, or give advice.",
  share:"Share your work or ask a question", post:"Post", addPhoto:"Add photo", like:"Like", feedback:"Write feedback", sendC:"Send",
  justNow:"Just now", foot:"A college project to support Durgi stone carvers.", foot2:"Works on phone and computer.",
@@ -103,9 +138,44 @@ te:{
  send:"అభ్యర్థన పంపండి", ordSaved:"అభ్యర్థన సేవ్ అయింది. అసలు వేదికలో ఇది నేరుగా శిల్పకారునికి చేరుతుంది.",
  yourReq:"మీ అభ్యర్థనలు", noReq:"ఇంకా అభ్యర్థనలు లేవు.", nothing:"ఇక్కడ ఇంకా ఏమీ లేదు.",
  optOther:"ఇంకేదైనా",
- lrnH:"కొత్త నైపుణ్యాలు నేర్చుకోండి", lrnP:"ఎక్కువ అమ్మాలనుకునే శిల్పకారులకు చిన్న పాఠాలు.",
+ lrnH:"కొత్త నైపుణ్యాలు నేర్చుకోండి", lrnP:"రాతి శిల్పకారుల కోసం వీడియో పాఠాలు, మార్గదర్శకాలు.",
  soon:"వీడియో త్వరలో", steps:"ముఖ్యమైన అంశాలు చదవండి", markDone:"పూర్తయింది అని గుర్తించండి", done:"పూర్తయింది", min:"నిమి",
  progress:(n,m)=>`${m} పాఠాలలో ${n} పూర్తయ్యాయి`,
+ uploadLessonBtn:"+ వీడియో పాఠాన్ని అప్‌లోడ్ చేయండి",
+ uploadLessonH:"శిల్పకళా వీడియో పాఠాన్ని అప్‌లోడ్ చేయండి",
+ uploadLessonP:"తోటి శిల్పకారులతో మీ రాతి చెక్కడపు మెళకువలు, ఉలి పద్ధతులు, చిట్కాలను పంచుకోండి.",
+ vidFileLabel:"వీడియో ఫైల్‌ను ఎంచుకోండి (MP4, WebM)",
+ vidUrlLabel:"లేదా వీడియో / యూట్యూబ్ లింక్ ఇవ్వండి",
+ lTitleEn:"పాఠం పేరు (ఇంగ్లీష్)",
+ lTitleTe:"పాఠం పేరు (తెలుగు)",
+ lDuration:"సమయం (నిమిషాలు)",
+ lCategory:"శిల్ప వర్గం",
+ lSteps:"కీలక సూచనలు (లైనుకొకటి)",
+ lAuthor:"బోధకుడు / శిల్పకారుని పేరు",
+ lSubmitBtn:"వీడియో పాఠాన్ని అప్‌లోడ్ చేయండి",
+ lUploading:"వీడియో అప్‌లోడ్ అవుతోంది...",
+ lUploadSuccess:"వీడియో పాఠం విజయవంతంగా అప్‌లోడ్ చేయబడింది!",
+ lUploadErr:"దయచేసి సరైన వీడియో ఫైల్‌ను ఎంచుకోండి లేదా వీడియో లింక్ ఇవ్వండి.",
+ watchMasterclass:"యూట్యూబ్‌లో మాస్టర్‌క్లాస్ చూడండి",
+ watchVideo:"వీడియో చూడండి",
+ filterAll:"అన్ని పాఠాలు",
+ filterCarving:"చెక్కడం",
+ filterStoneCheck:"రాయి ఎంపిక",
+ filterPolishing:"పాలిష్",
+ filterPacking:"ప్యాకింగ్",
+ filterPricing:"ధర & అమ్మకాలు",
+ filterUploads:"శిల్పకారుల వీడియోలు",
+ catCarving:"చెక్కడం & ఉలి పని",
+ catStoneCheck:"రాయి ఎంపిక",
+ catPolishing:"ఫినిషింగ్ & పాలిష్",
+ catPacking:"సురక్షిత ప్యాకింగ్",
+ catPricing:"ధర నిర్ణయించడం",
+ catPhotography:"శిల్పాల ఫోటోగ్రఫీ",
+ catSales:"ఆర్డర్లు & అమ్మకాలు",
+ noLessonsFound:"ఈ వర్గంలో పాఠాలు లేవు.",
+ uploadedByBadge:"శిల్పకారుడు అప్‌లోడ్ చేసినది",
+ previewVideo:"వీడియో ప్రివ్యూ",
+ cancel:"రద్దు",
  comH:"సమూహం", comP:"మీ పనిని పంచుకోండి, ప్రశ్న అడగండి, సలహా ఇవ్వండి.",
  share:"మీ పనిని పంచుకోండి లేదా ప్రశ్న అడగండి", post:"పోస్ట్ చేయండి", addPhoto:"ఫోటో జోడించండి", like:"ఇష్టం", feedback:"సలహా రాయండి", sendC:"పంపండి",
  justNow:"ఇప్పుడే", foot:"దుర్గి శిల్పకారులకు మద్దతుగా ఒక కళాశాల ప్రాజెక్ట్.", foot2:"ఫోన్‌లో, కంప్యూటర్‌లో పనిచేస్తుంది.",
@@ -161,23 +231,77 @@ const ARTISANS=[
 ];
 const LESSONS=[
  {id:"l1",min:6,en:"Check the stone before you carve",te:"చెక్కే ముందు రాయిని పరీక్షించండి",
-  s:{en:["Tap the stone and listen. A clear ring is good. A dull sound can mean a crack inside.","Look for veins and soft patches before you mark the design.","Plan thin parts along the grain so they do not snap."],
-     te:["రాయిని తట్టి శబ్దం వినండి. స్పష్టమైన శబ్దం మంచిది. మందమైన శబ్దం లోపల పగులు ఉందని అర్థం కావచ్చు.","డిజైన్ గీసే ముందు రాయిలో సన్నని చారలు, మెత్తని భాగాలు ఉన్నాయేమో చూడండి.","సన్నని భాగాలను రాయి గింజ దిశలో ప్లాన్ చేయండి, లేకపోతే విరిగిపోతాయి."]}},
- {id:"l2",min:8,en:"Finishing and polishing",te:"ఫినిషింగ్, పాలిష్",
-  s:{en:["Rub with water and abrasive paper. Start rough and move to fine.","Wash off all dust and dry the piece in shade.","If you use natural oil or wax for a deeper colour, test a small spot first."],
-     te:["నీళ్లు, రాపిడి కాగితంతో రుద్దండి. ముందు ముతకది, తర్వాత సన్నది వాడండి.","దుమ్మంతా కడిగి, నీడలో ఆరబెట్టండి.","లోతైన రంగు కోసం సహజ నూనె లేదా మైనం వాడితే, ముందు చిన్న చోట పరీక్షించండి."]}},
- {id:"l3",min:7,en:"Pricing your work",te:"మీ పనికి ధర నిర్ణయించడం",
-  s:{en:["Add the cost of the stone, your days of work, and tool wear.","Add packing and delivery. Show it clearly to the buyer.","Look at similar pieces online. Never sell below your own cost."],
-     te:["రాయి ఖర్చు, మీరు పని చేసిన రోజులు, పనిముట్ల అరుగుదల కలపండి.","ప్యాకింగ్, డెలివరీ ఖర్చు కలపండి. కొనుగోలుదారుకు స్పష్టంగా చూపించండి.","ఆన్‌లైన్‌లో ఇలాంటి శిల్పాల ధరలు చూడండి. మీ ఖర్చు కంటే తక్కువకు అమ్మకండి."]}},
- {id:"l4",min:6,en:"Packing stone safely",te:"రాతి శిల్పాలను సురక్షితంగా ప్యాక్ చేయడం",
-  s:{en:["Wrap the piece in soft cloth, then bubble wrap or paddy straw.","Use a wooden crate with space around the piece on all sides.","Write FRAGILE on the box and take a photo before you close it."],
-     te:["శిల్పాన్ని మెత్తని గుడ్డలో, తర్వాత బబుల్ ర్యాప్ లేదా వరిగడ్డిలో చుట్టండి.","అన్ని వైపులా ఖాళీ ఉండేలా చెక్క పెట్టె వాడండి.","పెట్టెపై “FRAGILE” అని రాయండి, మూసే ముందు ఫోటో తీయండి."]}},
- {id:"l5",min:5,en:"Taking good photos",te:"మంచి ఫోటోలు తీయడం",
-  s:{en:["Use daylight near a window and a plain background.","Take the front, the side, a close-up of the carving, and one with a hand to show size.","Write the size in inches and the weight in kilos."],
-     te:["కిటికీ దగ్గర పగటి వెలుగులో, సాదా నేపథ్యంతో తీయండి.","ముందు, పక్క, చెక్కడం దగ్గరి ఫోటో, పరిమాణం తెలియడానికి చేతితో ఒకటి తీయండి.","పరిమాణం అంగుళాలలో, బరువు కిలోలలో రాయండి."]}},
- {id:"l6",min:5,en:"Replying to buyers",te:"కొనుగోలుదారులకు జవాబు ఇవ్వడం",
-  s:{en:["Reply within one day, even if you only say you will check.","Tell the price and delivery cost together.","For custom pieces, agree the size and the date in writing."],
-     te:["ఒక రోజులోపు జవాబు ఇవ్వండి. చూసి చెబుతానని చెప్పినా చాలు.","ధర, డెలివరీ ఖర్చు కలిపి చెప్పండి.","ప్రత్యేక శిల్పాలకు పరిమాణం, తేదీ రాతపూర్వకంగా అంగీకరించండి."]}}
+  video:"assets/videos/stone-lesson-sample.mp4",
+  poster:"assets/hero-stone-carver.jpg",
+  youtubeId:"x83BisVs1B0",
+  cat:"stone-check",
+  by:"Master Artisan Durgi",
+  s:{en:["Tap the stone with an iron chisel and listen. A clear ringing tone indicates sound stone without hidden flaws.",
+         "Inspect surface grain, veins, and soft silt patches before chalking your design outline.",
+         "Orient delicate protrusions (arms, crown, lotus petals) strictly along the primary stone grain."],
+     te:["రాయిని తట్టి శబ్దం వినండి. స్పష్టమైన శబ్దం మంచిది. మందమైన శబ్దం లోపల పగులు ఉందని అర్థం కావచ్చు.",
+         "డిజైన్ గీసే ముందు రాయిలో సన్నని చారలు, మెత్తని భాగాలు ఉన్నాయేమో చూడండి.",
+         "సన్నని భాగాలను రాయి గింజ దిశలో ప్లాన్ చేయండి, లేకపోతే విరిగిపోతాయి."]}},
+ {id:"l2",min:8,en:"Finishing and polishing stone sculptures",te:"ఫినిషింగ్, పాలిష్ పద్ధతులు",
+  video:"assets/videos/craft-workshop-demo.mp4",
+  poster:"assets/carving-lotus-bowl.jpg",
+  youtubeId:"dYEI6m515Ac",
+  cat:"polishing",
+  by:"Lakshmi Devi",
+  s:{en:["Wet-sand progressively with silicone carbide water sandpaper starting from coarse (80 grit) to ultra-fine (600 grit).",
+         "Wash away all limestone powder slurry and allow the carving to air-dry naturally in shade.",
+         "Buff with cold-pressed natural linseed oil or beeswax for deep heritage glow and weatherproof sealing."],
+     te:["నీళ్లు, రాపిడి కాగితంతో రుద్దండి. ముందు ముతకది, తర్వాత సన్నది వాడండి.",
+         "దుమ్మంతా కడిగి, నీడలో ఆరబెట్టండి.",
+         "లోతైన రంగు కోసం సహజ నూనె లేదా మైనం వాడితే, ముందు చిన్న చోట పరీక్షించండి."]}},
+ {id:"l3",min:7,en:"Pricing your hand-carved stone art",te:"మీ పనికి సరైన ధర నిర్ణయించడం",
+  video:"assets/videos/stone-lesson-sample.mp4",
+  poster:"assets/carving-ganesha.jpg",
+  youtubeId:"pw7ISGMlAkA",
+  cat:"pricing",
+  by:"Srinivas",
+  s:{en:["Calculate baseline costs: raw stone quarry block, days of chiseling labor, and diamond chisel wear.",
+         "Itemize wooden crating, bubble packaging, and doorstep transport transparently.",
+         "Reference certified GI handicraft standards. Never underprice your ancestral artistry."],
+     te:["రాయి ఖర్చు, మీరు పని చేసిన రోజులు, పనిముట్ల అరుగుదల కలపండి.",
+         "ప్యాకింగ్, డెలివరీ ఖర్చు కలపండి. కొనుగోలుదారుకు స్పష్టంగా చూపించండి.",
+         "ఆన్‌లైన్‌లో ఇలాంటి శిల్పాల ధరలు చూడండి. మీ ఖర్చు కంటే తక్కువకు అమ్మకండి."]}},
+ {id:"l4",min:6,en:"Packing stone safely in wooden crates",te:"రాతి శిల్పాలను సురక్షితంగా ప్యాక్ చేయడం",
+  video:"assets/videos/craft-workshop-demo.mp4",
+  poster:"assets/carving-pillar.jpg",
+  youtubeId:"SWjz5T4RMQk",
+  cat:"packing",
+  by:"Durgi Artisans Guild",
+  s:{en:["Wrap vulnerable stone protrusions in thick multi-layered cotton padding and shock-absorbing bubble wrap.",
+         "Mount inside heavy wooden pine slatted crates with at least 2 inches of cushion clearance on all 6 sides.",
+         "Affix clear 'FRAGILE - SACRED STONE ART' stencils and document photos before dispatching."],
+     te:["శిల్పాన్ని మెత్తని గుడ్డలో, తర్వాత బబుల్ ర్యాప్ లేదా వరిగడ్డిలో చుట్టండి.",
+         "అన్ని వైపులా ఖాళీ ఉండేలా చెక్క పెట్టె వాడండి.",
+         "పెట్టెపై “FRAGILE” అని రాయండి, మూసే ముందు ఫోటో తీయండి."]}},
+ {id:"l5",min:5,en:"Taking professional photos of stone carvings",te:"శిల్పాలకు మంచి ఫోటోలు తీయడం",
+  video:"assets/videos/stone-lesson-sample.mp4",
+  poster:"assets/carving-lamp.jpg",
+  youtubeId:"71LvwUmsO0c",
+  cat:"photography",
+  by:"Lepakshi Guild",
+  s:{en:["Photograph in diffused morning daylight against a solid neutral terracotta or dark backdrop.",
+         "Capture 4 core angles: front facade, 45-degree isometric, crisp side profile, and hand scale comparison.",
+         "State accurate height in inches and weight in kilograms to give temple buyers complete confidence."],
+     te:["కిటికీ దగ్గర పగటి వెలుగులో, సాదా నేపథ్యంతో తీయండి.",
+         "ముందు, పక్క, చెక్కడం దగ్గరి ఫోటో, పరిమాణం తెలియడానికి చేతితో ఒకటి తీయండి.",
+         "పరిమాణం అంగుళాలలో, బరువు కిలోలలో రాయండి."]}},
+ {id:"l6",min:5,en:"Replying to temple buyers & managing orders",te:"కొనుగోలుదారులకు జవాబు ఇవ్వడం, ఆర్డర్లు",
+  video:"assets/videos/craft-workshop-demo.mp4",
+  poster:"assets/carving-nandi.jpg",
+  youtubeId:"x83BisVs1B0",
+  cat:"sales",
+  by:"Hunar Setu Team",
+  s:{en:["Acknowledge inquiries within 24 hours with polite, courteous greetings in English or Telugu.",
+         "Provide itemized formal quotations covering stone variety, carving completion timeline, and logistics.",
+         "Confirm custom temple sanctum dimensions in written order milestones before cutting master blocks."],
+     te:["ఒక రోజులోపు జవాబు ఇవ్వండి. చూసి చెబుతానని చెప్పినా చాలు.",
+         "ధర, డెలివరీ ఖర్చు కలిపి చెప్పండి.",
+         "ప్రత్యేక శిల్పాలకు పరిమాణం, తేదీ రాతపూర్వకంగా అంగీకరించండి."]}}
 ];
 const SEED_POSTS=[
  {id:"p1",who:"Srinivas",text:{en:"Finished this lotus bowl after five days. Any advice on the polish?",te:"ఐదు రోజుల్లో ఈ కమలం కుండీ పూర్తి చేశాను. పాలిష్ గురించి ఏమైనా సలహా ఉందా?"},t:0,likes:3,comments:[{who:"Lakshmi Devi",text:{en:"Use finer paper on the petals, they will shine more.",te:"రేకులపై సన్నని కాగితం వాడండి, ఇంకా మెరుస్తాయి."}}],sample:true,photo:"assets/carving-lotus-bowl.jpg"},
@@ -227,10 +351,11 @@ function updateDbIndicator(connected){
 async function syncFromCloud(){
   if (!useBackendApi) return;
   try {
-    const [ordRes, wrkRes, pstRes] = await Promise.all([
+    const [ordRes, wrkRes, pstRes, lrnRes] = await Promise.all([
       fetch("/api/orders").then(r => r.json()).catch(() => null),
       fetch("/api/works").then(r => r.json()).catch(() => null),
-      fetch("/api/posts").then(r => r.json()).catch(() => null)
+      fetch("/api/posts").then(r => r.json()).catch(() => null),
+      fetch("/api/lessons").then(r => r.json()).catch(() => null)
     ]);
     if (ordRes && ordRes.orders && ordRes.orders.length) {
       S.requests = ordRes.orders;
@@ -240,6 +365,9 @@ async function syncFromCloud(){
     }
     if (pstRes && pstRes.posts && pstRes.posts.length) {
       S.posts = [...pstRes.posts, ...SEED_POSTS];
+    }
+    if (lrnRes && lrnRes.lessons && lrnRes.lessons.length) {
+      S.lessons = lrnRes.lessons;
     }
     save();
     render(true);
@@ -251,11 +379,14 @@ checkBackend();
 
 /* ---------- saved data (browser storage fallback) ---------- */
 const KEY="hunar-setu-v1";
-function fresh(){return {lang:"en",works:[],requests:[],posts:SEED_POSTS.map(p=>({...p,comments:[...p.comments]})),done:[],liked:[],users:{},session:""}}
+function fresh(){return {lang:"en",works:[],requests:[],posts:SEED_POSTS.map(p=>({...p,comments:[...p.comments]})),lessons:[],done:[],liked:[],users:{},session:""}}
 let S=fresh();
 try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(fresh(),JSON.parse(r))}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function allLessons(){return (S.lessons && S.lessons.length) ? S.lessons : LESSONS;}
+
 let flash="",flashView="",errs={},pending={photo:""},filter="all",prefill="";
+let learnFilter="all",showUploadLesson=false,pendingLessonVideo={data:"",name:"",url:""};
 const t=k=>{const v=T[S.lang][k];return v===undefined?T.en[k]:v};
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const loc=o=>typeof o==="string"?o:(o[S.lang]||o.en);
@@ -270,7 +401,9 @@ const IC={
  community:'<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.3c3 0 6 1 6 5.7"/>',
  add:'<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>',
  play:'<circle cx="12" cy="12" r="10" fill="none"/><path d="M10 8l6 4-6 4z" fill="currentColor"/>',
- heart:'<path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/>'
+ heart:'<path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.4-7 10-7 10z"/>',
+ video:'<polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>',
+ upload:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>'
 };
 const icon=(n,sw=2)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]}</svg>`;
 const ART={
@@ -512,14 +645,179 @@ function vOrder(){
   ${reqs.length?`<ul class="reqs">${reqs.map(r=>`<li><b>${esc(t(r.item)||r.item)}</b> · ${esc(r.name)}, ${esc(r.phone)}<br><span class="note">${esc(r.size)} ${r.budget?"· "+rupees(r.budget):""} ${r.when?"· "+esc(r.when):""}</span><br>${esc(r.text)}</li>`).join("")}</ul>`:`<p class="note">${t("noReq")}</p>`}`;
 }
 function vLearn(){
-  const n=LESSONS.filter(l=>S.done.includes(l.id)).length,m=LESSONS.length;
-  return `<section class="sec-head"><h1>${t("lrnH")}</h1><p class="lead">${t("lrnP")}</p>
-    <p><b>${t("progress")(n,m)}</b></p><div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="${m}" aria-valuenow="${n}"><i style="width:${n/m*100}%"></i></div></section>
-  <div class="lessons">${LESSONS.map(l=>{const d=S.done.includes(l.id);return `
-   <article class="lesson ${d?"done":""}"><div class="video">${icon("play",1.6)}<span>${t("soon")} · ${l.min} ${t("min")}</span></div>
-   <div class="body"><h3>${loc(l)}</h3>
-   <details><summary>${t("steps")}</summary><ol>${l.s[S.lang].map(x=>`<li>${esc(x)}</li>`).join("")}</ol></details>
-   <div><button class="btn small ${d?"":"ghost"}" type="button" data-done="${l.id}" aria-pressed="${d}">${d?"✓ "+t("done"):t("markDone")}</button></div></div></article>`}).join("")}</div>`;
+  const lessons = allLessons();
+  const n = lessons.filter(l => S.done.includes(l.id)).length;
+  const m = lessons.length;
+  
+  const filtered = lessons.filter(l => {
+    if (learnFilter === "all") return true;
+    if (learnFilter === "uploads") return l.by && !["Master Artisan Durgi", "Lakshmi Devi", "Srinivas", "Durgi Artisans Guild", "Lepakshi Guild", "Hunar Setu Team"].includes(l.by);
+    return l.cat === learnFilter;
+  });
+
+  const catNames = {
+    "all": t("filterAll"),
+    "stone-check": t("catStoneCheck"),
+    "carving": t("filterCarving"),
+    "polishing": t("filterPolishing"),
+    "packing": t("filterPacking"),
+    "pricing": t("filterPricing"),
+    "uploads": t("filterUploads")
+  };
+
+  return `${flashHtml()}
+  <section class="sec-head">
+    <div class="learn-top-bar">
+      <div>
+        <h1>${t("lrnH")}</h1>
+        <p class="lead">${t("lrnP")}</p>
+      </div>
+      <button class="btn upload-trigger-btn" type="button" data-action="toggle-upload-lesson">
+        ${icon("video", 1.8)} ${t("uploadLessonBtn")}
+      </button>
+    </div>
+    
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:.4rem">
+      <b>${t("progress")(n, m)}</b>
+      <span class="note">${Math.round((n / (m || 1)) * 100)}%</span>
+    </div>
+    <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="${m}" aria-valuenow="${n}">
+      <i style="width:${(n / (m || 1)) * 100}%"></i>
+    </div>
+  </section>
+
+  ${showUploadLesson ? `
+  <div class="upload-lesson-panel">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <h3>${t("uploadLessonH")}</h3>
+      <button class="btn small ghost" type="button" data-action="close-upload-lesson">✕</button>
+    </div>
+    <p class="note" style="margin-top:0">${t("uploadLessonP")}</p>
+    
+    <form class="f" id="uploadLessonForm" style="box-shadow:none;border:none;padding:0;background:transparent;max-width:100%" novalidate>
+      <div class="two">
+        <div class="field">
+          <label for="ul-file">${t("vidFileLabel")}</label>
+          <input type="file" id="ul-file" accept="video/mp4,video/webm,video/ogg,video/quicktime">
+        </div>
+        <div class="field">
+          <label for="ul-url">${t("vidUrlLabel")}</label>
+          <input type="url" id="ul-url" placeholder="https://... or YouTube video URL">
+        </div>
+      </div>
+
+      <div id="ul-preview-wrap" class="video-preview-wrap" style="${pendingLessonVideo.data || pendingLessonVideo.url ? '' : 'display:none;'}">
+        <video id="ul-preview-vid" controls playsinline style="max-height:220px;" src="${pendingLessonVideo.data || pendingLessonVideo.url || ''}"></video>
+        <span>${t("previewVideo")}</span>
+      </div>
+
+      <div class="two">
+        <div class="field">
+          <label for="ul-title-en">${t("lTitleEn")} *</label>
+          <input id="ul-title-en" required placeholder="e.g. Chiseling Lotus Petals">
+          <span class="err" id="e-ul-title-en"></span>
+        </div>
+        <div class="field">
+          <label for="ul-title-te">${t("lTitleTe")}</label>
+          <input id="ul-title-te" placeholder="e.g. కమలం రేకులు చెక్కడం">
+        </div>
+      </div>
+
+      <div class="two">
+        <div class="field">
+          <label for="ul-min">${t("lDuration")}</label>
+          <input id="ul-min" type="number" min="1" max="120" value="6">
+        </div>
+        <div class="field">
+          <label for="ul-cat">${t("lCategory")}</label>
+          <select id="ul-cat">
+            <option value="carving">${t("catCarving")}</option>
+            <option value="stone-check">${t("catStoneCheck")}</option>
+            <option value="polishing">${t("catPolishing")}</option>
+            <option value="packing">${t("catPacking")}</option>
+            <option value="pricing">${t("catPricing")}</option>
+            <option value="photography">${t("catPhotography")}</option>
+            <option value="sales">${t("catSales")}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="ul-steps">${t("lSteps")}</label>
+        <textarea id="ul-steps" placeholder="1. Tap stone to check soundness&#10;2. Trace master design outline&#10;3. Chisel with flat tool"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="ul-author">${t("lAuthor")}</label>
+        <input id="ul-author" value="${esc(me().name || 'Master Artisan')}">
+      </div>
+
+      <div class="err" id="e-ul-main"></div>
+
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <button class="btn" type="submit" id="ul-submit-btn">${t("lSubmitBtn")}</button>
+        <button class="btn ghost" type="button" data-action="close-upload-lesson">${t("cancel")}</button>
+      </div>
+    </form>
+  </div>
+  ` : ''}
+
+  <!-- Category Filter Bar -->
+  <div class="learn-filter-bar chips" role="tablist">
+    ${["all", "stone-check", "carving", "polishing", "packing", "pricing", "uploads"].map(c => `
+      <button class="chip" type="button" role="tab" data-learn-filter="${c}" aria-pressed="${learnFilter === c}">
+        ${catNames[c] || c}
+      </button>
+    `).join("")}
+  </div>
+
+  <!-- Video Lessons List -->
+  ${filtered.length ? `
+  <div class="lessons">
+    ${filtered.map(l => {
+      const d = S.done.includes(l.id);
+      const isUpload = l.by && !["Master Artisan Durgi", "Lakshmi Devi", "Srinivas", "Durgi Artisans Guild", "Lepakshi Guild", "Hunar Setu Team"].includes(l.by);
+      const stepsArr = (l.s && (l.s[S.lang] || l.s.en || l.s)) || [];
+      return `
+      <article class="lesson ${d ? 'done' : ''}" id="lesson-${l.id}">
+        <div class="lesson-video-box">
+          <span class="vid-duration-badge">⏱️ ${l.min} ${t("min")}</span>
+          ${isUpload ? `<span class="vid-cat-badge">${t("uploadedByBadge")}</span>` : ''}
+          <video class="lesson-vid-player" src="${l.video}" poster="${l.poster || 'assets/hero-stone-carver.jpg'}" controls preload="metadata" playsinline>
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        
+        <div class="body">
+          <div class="lesson-meta">
+            <span class="tag">${catNames[l.cat] || l.cat}</span>
+            <span class="author-tag">👤 ${esc(l.by || 'Artisan')}</span>
+          </div>
+
+          <h3>${esc(loc(l))}</h3>
+
+          ${Array.isArray(stepsArr) && stepsArr.length ? `
+          <details>
+            <summary>${t("steps")}</summary>
+            <ol>
+              ${stepsArr.map(s => `<li>${esc(s)}</li>`).join("")}
+            </ol>
+          </details>` : ''}
+
+          <div class="lesson-acts-row">
+            <button class="btn small ${d ? '' : 'ghost'}" type="button" data-done="${l.id}" aria-pressed="${d}">
+              ${d ? '✓ ' + t("done") : t("markDone")}
+            </button>
+            ${l.youtubeId ? `
+            <a class="btn small ghost yt-btn" href="https://www.youtube.com/watch?v=${l.youtubeId}" target="_blank" rel="noopener">
+              ▶ ${t("watchMasterclass")}
+            </a>` : ''}
+          </div>
+        </div>
+      </article>`;
+    }).join("")}
+  </div>
+  ` : `<p class="note">${t("noLessonsFound")}</p>`}`;
 }
 function ago(p){return p.t?new Date(p.t).toLocaleDateString(S.lang==="te"?"te-IN":"en-IN",{day:"numeric",month:"short"}):""}
 function postHtml(p){
@@ -739,6 +1037,30 @@ document.addEventListener("change",e=>{
     const prev=document.getElementById(e.target.id==="a-photo"?"a-prev":"p-prev");
     shrink(f,url=>{pending.photo=url;if(url){prev.src=url;prev.hidden=false}});
   }
+  if(e.target.id==="ul-file"){
+    const f=e.target.files[0];
+    if(!f)return;
+    const objUrl=URL.createObjectURL(f);
+    pendingLessonVideo.name=f.name;
+    pendingLessonVideo.url=objUrl;
+    const wrap=document.getElementById("ul-preview-wrap");
+    const vid=document.getElementById("ul-preview-vid");
+    if(vid&&wrap){vid.src=objUrl;wrap.style.display="flex"}
+    const reader=new FileReader();
+    reader.onload=ev=>{pendingLessonVideo.data=ev.target.result};
+    reader.readAsDataURL(f);
+  }
+});
+document.addEventListener("input",e=>{
+  if(e.target.id==="ul-url"){
+    const url=e.target.value.trim();
+    if(url){
+      const wrap=document.getElementById("ul-preview-wrap");
+      const vid=document.getElementById("ul-preview-vid");
+      if(vid&&wrap){vid.src=url;wrap.style.display="flex"}
+      pendingLessonVideo.url=url;
+    }
+  }
 });
 
 /* ---------- actions ---------- */
@@ -747,6 +1069,22 @@ function fail(map){errs=map;const keys=Object.keys(map);
   keys.forEach(k=>{const el=document.getElementById("e-"+k);if(el)el.textContent=map[k]});
   const first=document.getElementById(keys[0]);if(first)first.focus()}
 document.addEventListener("click",e=>{
+  if(e.target.closest('[data-action="toggle-upload-lesson"]')){
+    showUploadLesson=!showUploadLesson;
+    render(true);
+    return;
+  }
+  if(e.target.closest('[data-action="close-upload-lesson"]')){
+    showUploadLesson=false;
+    render(true);
+    return;
+  }
+  const lFilterBtn=e.target.closest('[data-learn-filter]');
+  if(lFilterBtn){
+    learnFilter=lFilterBtn.dataset.learnFilter;
+    render(true);
+    return;
+  }
   const catLink = e.target.closest("a[data-cat]");
   if(catLink){
     filter = catLink.dataset.cat;
@@ -765,8 +1103,104 @@ document.addEventListener("click",e=>{
   else if(b.dataset.like){if(!S.session)return needLogin();const p=S.posts.find(x=>x.id===b.dataset.like);if(!p)return;
     if(S.liked.includes(p.id)){S.liked=S.liked.filter(x=>x!==p.id);p.likes--}else{S.liked.push(p.id);p.likes++}save();render(true)}
 });
+
+async function handleUploadLesson(f){
+  const titleEn=val("ul-title-en");
+  const titleTe=val("ul-title-te")||titleEn;
+  const min=parseInt(val("ul-min"))||5;
+  const cat=val("ul-cat")||"carving";
+  const stepsRaw=val("ul-steps");
+  const author=val("ul-author")||(me().name||"Master Artisan");
+  const urlVal=val("ul-url");
+  const fileInput=document.getElementById("ul-file");
+  const hasFile=fileInput&&fileInput.files&&fileInput.files[0];
+
+  const m={};
+  if(!titleEn)m["ul-title-en"]=t("errName");
+  if(!hasFile&&!urlVal&&!pendingLessonVideo.data){
+    const errEl=document.getElementById("e-ul-main");
+    if(errEl)errEl.textContent=t("lUploadErr");
+    return;
+  }
+  if(Object.keys(m).length)return fail(m);
+
+  const btn=document.getElementById("ul-submit-btn");
+  if(btn){btn.disabled=true;btn.textContent=t("lUploading");}
+
+  let finalVideoUrl=urlVal||"assets/videos/stone-lesson-sample.mp4";
+
+  if(hasFile||pendingLessonVideo.data){
+    const fObj=hasFile?fileInput.files[0]:null;
+    const fName=(fObj&&fObj.name)||pendingLessonVideo.name||"lesson_video.mp4";
+    
+    if(pendingLessonVideo.data&&useBackendApi){
+      try{
+        const upRes=await fetch("/api/upload-video",{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({filename:fName,data:pendingLessonVideo.data})
+        });
+        if(upRes.ok){
+          const upData=await upRes.json();
+          if(upData.video_url)finalVideoUrl=upData.video_url;
+        }
+      }catch(err){
+        console.warn("Server video upload error, fallback to local:",err);
+      }
+    }else if(fObj){
+      finalVideoUrl=URL.createObjectURL(fObj);
+    }
+  }
+
+  const lines=stepsRaw 
+    ? stepsRaw.split("\n").map(s=>s.trim()).filter(Boolean)
+    : ["Watch the video tutorial attentively.","Apply chiseling techniques to stone."];
+
+  const newLesson={
+    id:"l"+Date.now(),
+    min:min,
+    en:titleEn,
+    te:titleTe,
+    video:finalVideoUrl,
+    poster:"assets/hero-stone-carver.jpg",
+    cat:cat,
+    s:{en:lines,te:lines},
+    by:author,
+    t:new Date().toISOString()
+  };
+
+  if(useBackendApi){
+    try{
+      const res=await fetch("/api/lessons",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(newLesson)
+      });
+      if(res.ok){
+        const saved=await res.json();
+        if(saved.id)newLesson.id=saved.id;
+      }
+    }catch(e){
+      console.warn("Failed saving lesson to cloud:",e);
+    }
+  }
+
+  if(!S.lessons||!S.lessons.length){
+    S.lessons=[...LESSONS];
+  }
+  S.lessons.unshift(newLesson);
+  save();
+
+  pendingLessonVideo={data:"",name:"",url:""};
+  showUploadLesson=false;
+  flash=t("lUploadSuccess");
+  flashView="learn";
+  render(true);
+}
+
 document.addEventListener("submit",e=>{
   e.preventDefault();const f=e.target;
+  if(f.id==="uploadLessonForm")return handleUploadLesson(f);
   if(f.id==="authForm")return doAuth();
   if(!S.session)return needLogin();
   if(f.id==="addForm"){
